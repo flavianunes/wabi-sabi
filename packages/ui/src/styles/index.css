@@ -1,0 +1,44 @@
+/**
+ * The library's stylesheet. Consumers import this once, at their root:
+ *
+ *   import '@wabi-sabi/ui/styles.css'
+ *
+ * Order matters: primitives define the raw values, dark.css overrides those values per
+ * mode, and semantic.css maps them to the names components actually use.
+ */
+
+@import url("./primitives.css");
+@import url("./dark.css");
+@import url("./semantic.css");
+@import url("./motion.css");
+
+:root {
+  /*
+   * The library ships no fonts, for the same reason it ships no icon set: whoever
+   * installs it already has typography. These tokens exist so components can reference
+   * a name, and they inherit from the consuming project.
+   */
+  --ws-font-mono: ui-monospace, sfmono-regular, menlo, monospace;
+
+  /* Modular scale, ratio 1.2 from 16px. */
+  --ws-text-xs: 0.694rem;
+  --ws-text-sm: 0.833rem;
+  --ws-text-base: 1rem;
+  --ws-text-lg: 1.2rem;
+  --ws-text-xl: 1.44rem;
+  --ws-text-2xl: 1.728rem;
+  --ws-text-3xl: 2.074rem;
+
+  --ws-leading-tight: 1.2;
+  --ws-leading-base: 1.5;
+  --ws-leading-prose: 1.65;
+
+  /* Two weights are enough. 600 and 700 are deliberately out. */
+  --ws-weight-regular: 400;
+  --ws-weight-medium: 500;
+
+  /* stroke-width is a CSS property, not only an SVG attribute, so icon stroke weight is
+     controlled globally by token without passing a prop to any component. */
+  --ws-icon-size: 1rem;
+  --ws-icon-stroke: 1.25;
+}

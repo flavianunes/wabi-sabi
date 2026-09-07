@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Lint and format
+        run: pnpm exec biome ci .
+
+      - name: Lint CSS
+        run: pnpm exec stylelint "packages/ui/src/**/*.css"
+
+      - name: Typecheck
+        run: pnpm -r typecheck
+
+      - name: Test
+        run: pnpm --filter @wabi-sabi/ui test
+
+      # Builds the library, then injects the "use client" directive.
+      - name: Build library
+        run: pnpm build
+
+      # Reads dist/ and fails if the directive is missing or hoisted below an import, if a
+      # declaration file carries it, if an exports path does not resolve, or if a
+      # dependency was bundled instead of externalised.
+      - name: Smoke test the package
+        run: pnpm smoke
+
+      # Checks what npm would actually put in the tarball. This is the one packaging
+      # failure that publint, attw and the smoke test do not cover, and the package is not
+      # published yet, so nothing else would catch it.
+      - name: Inspect the package tarball
+        run: pnpm --filter @wabi-sabi/ui exec npm pack --dry-run
+
+      # The real proof that the directive works: a React Server Component rendering an
+      # imported client component, with no transpilePackages.
+      - name: Build documentation
+        run: pnpm --filter docs build

@@ -1,0 +1,36 @@
+{
+  "name": "wabi-sabi",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Monorepo for @wabi-sabi/ui, a React component library built on Base UI and Motion.",
+  "license": "MIT",
+  "packageManager": "pnpm@11.1.1",
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=11"
+  },
+  "scripts": {
+    "build": "pnpm --filter @wabi-sabi/ui build",
+    "build:docs": "pnpm --filter @wabi-sabi/ui build && pnpm --filter docs build",
+    "dev": "pnpm --filter @wabi-sabi/ui build && pnpm --filter docs dev",
+    "test": "pnpm --filter @wabi-sabi/ui test",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "biome ci . && stylelint \"packages/ui/src/**/*.css\"",
+    "lint:css": "stylelint \"packages/ui/src/**/*.css\"",
+    "format": "biome check --write .",
+    "smoke": "node scripts/smoke-dist.ts",
+    "new-component": "node scripts/new-component.ts",
+    "prepare": "lefthook install"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.12",
+    "@changesets/cli": "^3.0.2",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "lefthook": "^2.1.12",
+    "stylelint": "^17.15.0",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^7.0.2"
+  }
+}

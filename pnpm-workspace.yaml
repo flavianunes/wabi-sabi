@@ -1,0 +1,8 @@
+packages:
+  - packages/*
+  - apps/*
+
+# pnpm blocks dependency build scripts by default. Lefthook's needs to run, because it is
+# what installs the git hooks — without this the hooks silently never fire.
+allowBuilds:
+  lefthook: true

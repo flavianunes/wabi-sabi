@@ -1,0 +1,191 @@
+/**
+ * Dark mode: primitive values only.
+ *
+ * The semantic mappings in semantic.css do not change between modes — only the primitive
+ * values behind them do. That is why there is no dark counterpart to that file.
+ *
+ * Dark mode applies through two mechanisms:
+ *   1. An explicit [data-theme="dark"] on any ancestor.
+ *   2. The OS preference, unless [data-theme="light"] explicitly opts out.
+ *
+ * The values are written once, against a selector list covering the explicit case, and
+ * repeated inside the media query for the automatic case. The alternative — a single
+ * :where() selector list — would drop specificity to zero and lose to :root in
+ * primitives.css, so the repetition is deliberate.
+ *
+ * Note that step 9 is identical to its light-mode value in every scale. See primitives.css.
+ */
+
+[data-theme="dark"] {
+  /* neutral */
+  --ws-neutral-1: #121111;
+  --ws-neutral-2: #1a1919;
+  --ws-neutral-3: #262523;
+  --ws-neutral-4: #2f2d2b;
+  --ws-neutral-5: #383634;
+  --ws-neutral-6: #43413e;
+  --ws-neutral-7: #524f4c;
+  --ws-neutral-8: #696561;
+  --ws-neutral-9: #736e68;
+  --ws-neutral-10: #817c77;
+  --ws-neutral-11: #b4b0ac;
+  --ws-neutral-12: #e9e7e5;
+
+  /* sakura */
+  --ws-sakura-1: #151012;
+  --ws-sakura-2: #20161b;
+  --ws-sakura-3: #331d28;
+  --ws-sakura-4: #402332;
+  --ws-sakura-5: #4d293c;
+  --ws-sakura-6: #5a3247;
+  --ws-sakura-7: #6d3f57;
+  --ws-sakura-8: #8b506f;
+  --ws-sakura-9: #9e507a;
+  --ws-sakura-10: #ae5f89;
+  --ws-sakura-11: #dc9abb;
+  --ws-sakura-12: #fddeec;
+
+  /* blue */
+  --ws-blue-1: #0f1216;
+  --ws-blue-2: #141a23;
+  --ws-blue-3: #1a2539;
+  --ws-blue-4: #1f2d49;
+  --ws-blue-5: #243657;
+  --ws-blue-6: #2d4165;
+  --ws-blue-7: #384f7a;
+  --ws-blue-8: #48659c;
+  --ws-blue-9: #466db5;
+  --ws-blue-10: #547cc5;
+  --ws-blue-11: #90b1ee;
+  --ws-blue-12: #d9e9ff;
+
+  /* green */
+  --ws-green-1: #0e130f;
+  --ws-green-2: #131c14;
+  --ws-green-3: #172b1a;
+  --ws-green-4: #19351e;
+  --ws-green-5: #1d3f23;
+  --ws-green-6: #264b2c;
+  --ws-green-7: #305b37;
+  --ws-green-8: #3c7546;
+  --ws-green-9: #338144;
+  --ws-green-10: #439152;
+  --ws-green-11: #87c28f;
+  --ws-green-12: #d7f0d9;
+
+  /* yellow — steps 9 and 10 stay bright. See the note in primitives.css. */
+  --ws-yellow-1: #14110c;
+  --ws-yellow-2: #1e190d;
+  --ws-yellow-3: #2f2303;
+  --ws-yellow-4: #3c2b00;
+  --ws-yellow-5: #493300;
+  --ws-yellow-6: #563d00;
+  --ws-yellow-7: #684b00;
+  --ws-yellow-8: #836000;
+  --ws-yellow-9: #ffc807;
+  --ws-yellow-10: #f2bc00;
+  --ws-yellow-11: #e1b850;
+  --ws-yellow-12: #ffe9b6;
+
+  /* red */
+  --ws-red-1: #180f0e;
+  --ws-red-2: #251412;
+  --ws-red-3: #3d1815;
+  --ws-red-4: #4e1b17;
+  --ws-red-5: #5d201b;
+  --ws-red-6: #6c2823;
+  --ws-red-7: #82332d;
+  --ws-red-8: #a64039;
+  --ws-red-9: #c03631;
+  --ws-red-10: #d1473f;
+  --ws-red-11: #fc8d81;
+  --ws-red-12: #ffdad3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* neutral */
+    --ws-neutral-1: #121111;
+    --ws-neutral-2: #1a1919;
+    --ws-neutral-3: #262523;
+    --ws-neutral-4: #2f2d2b;
+    --ws-neutral-5: #383634;
+    --ws-neutral-6: #43413e;
+    --ws-neutral-7: #524f4c;
+    --ws-neutral-8: #696561;
+    --ws-neutral-9: #736e68;
+    --ws-neutral-10: #817c77;
+    --ws-neutral-11: #b4b0ac;
+    --ws-neutral-12: #e9e7e5;
+
+    /* sakura */
+    --ws-sakura-1: #151012;
+    --ws-sakura-2: #20161b;
+    --ws-sakura-3: #331d28;
+    --ws-sakura-4: #402332;
+    --ws-sakura-5: #4d293c;
+    --ws-sakura-6: #5a3247;
+    --ws-sakura-7: #6d3f57;
+    --ws-sakura-8: #8b506f;
+    --ws-sakura-9: #9e507a;
+    --ws-sakura-10: #ae5f89;
+    --ws-sakura-11: #dc9abb;
+    --ws-sakura-12: #fddeec;
+
+    /* blue */
+    --ws-blue-1: #0f1216;
+    --ws-blue-2: #141a23;
+    --ws-blue-3: #1a2539;
+    --ws-blue-4: #1f2d49;
+    --ws-blue-5: #243657;
+    --ws-blue-6: #2d4165;
+    --ws-blue-7: #384f7a;
+    --ws-blue-8: #48659c;
+    --ws-blue-9: #466db5;
+    --ws-blue-10: #547cc5;
+    --ws-blue-11: #90b1ee;
+    --ws-blue-12: #d9e9ff;
+
+    /* green */
+    --ws-green-1: #0e130f;
+    --ws-green-2: #131c14;
+    --ws-green-3: #172b1a;
+    --ws-green-4: #19351e;
+    --ws-green-5: #1d3f23;
+    --ws-green-6: #264b2c;
+    --ws-green-7: #305b37;
+    --ws-green-8: #3c7546;
+    --ws-green-9: #338144;
+    --ws-green-10: #439152;
+    --ws-green-11: #87c28f;
+    --ws-green-12: #d7f0d9;
+
+    /* yellow */
+    --ws-yellow-1: #14110c;
+    --ws-yellow-2: #1e190d;
+    --ws-yellow-3: #2f2303;
+    --ws-yellow-4: #3c2b00;
+    --ws-yellow-5: #493300;
+    --ws-yellow-6: #563d00;
+    --ws-yellow-7: #684b00;
+    --ws-yellow-8: #836000;
+    --ws-yellow-9: #ffc807;
+    --ws-yellow-10: #f2bc00;
+    --ws-yellow-11: #e1b850;
+    --ws-yellow-12: #ffe9b6;
+
+    /* red */
+    --ws-red-1: #180f0e;
+    --ws-red-2: #251412;
+    --ws-red-3: #3d1815;
+    --ws-red-4: #4e1b17;
+    --ws-red-5: #5d201b;
+    --ws-red-6: #6c2823;
+    --ws-red-7: #82332d;
+    --ws-red-8: #a64039;
+    --ws-red-9: #c03631;
+    --ws-red-10: #d1473f;
+    --ws-red-11: #fc8d81;
+    --ws-red-12: #ffdad3;
+  }
+}

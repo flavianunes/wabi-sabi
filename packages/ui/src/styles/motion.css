@@ -1,0 +1,47 @@
+/**
+ * Motion tokens.
+ *
+ * Mirrored as a typed object in src/motion/tokens.ts, for use inside Motion where the
+ * values must be numbers rather than CSS strings. A test asserts the two stay in sync.
+ *
+ * Durations are seconds in the TS object and milliseconds here, since that is what each
+ * consumer expects.
+ */
+
+:root {
+  --ws-duration-instant: 80ms;
+  --ws-duration-fast: 150ms;
+  --ws-duration-base: 250ms;
+  --ws-duration-slow: 400ms;
+
+  /*
+   * Entering and leaving both decelerate. There is deliberately no ease-in curve here:
+   * ease-in starts slow, which delays the exact moment the user is watching. An ease-out
+   * at 200ms reads as faster than an ease-in at 200ms.
+   *
+   * The built-in CSS easings are too weak to read as intentional, so these are the
+   * stronger equivalents rather than `ease-out` and `ease-in-out`.
+   */
+  --ws-ease-enter: cubic-bezier(0.23, 1, 0.32, 1);
+  --ws-ease-exit: cubic-bezier(0.23, 1, 0.32, 1);
+  /* For something moving or morphing on screen, rather than arriving or leaving. */
+  --ws-ease-move: cubic-bezier(0.77, 0, 0.175, 1);
+  --ws-ease-spring: linear(
+    0,
+    0.006,
+    0.025,
+    0.101,
+    0.539,
+    0.826,
+    0.962,
+    1.019,
+    1.03,
+    1.024,
+    1.013,
+    1.005,
+    1
+  );
+
+  --ws-distance-sm: 4px;
+  --ws-distance-md: 8px;
+}

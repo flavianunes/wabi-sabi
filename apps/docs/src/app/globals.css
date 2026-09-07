@@ -1,0 +1,126 @@
+/*
+ * The documentation's own styles.
+ *
+ * This app is the library's first real consumer, so it deliberately uses nothing but the
+ * library's tokens — no CSS framework, no second styling opinion. If a token is awkward
+ * to use from here, that is a finding about the token, not about this file.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ws-canvas);
+  color: var(--ws-text-default);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", roboto, sans-serif;
+  font-size: var(--ws-text-base);
+  line-height: var(--ws-leading-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: var(--ws-text-3xl);
+  font-weight: var(--ws-weight-medium);
+  line-height: var(--ws-leading-tight);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 3rem 0 1rem;
+  font-size: var(--ws-text-xl);
+  font-weight: var(--ws-weight-medium);
+  line-height: var(--ws-leading-tight);
+}
+
+p {
+  /* Measure stays under 75 characters in prose. */
+  max-width: 60ch;
+  color: var(--ws-text-subtle);
+  line-height: var(--ws-leading-prose);
+}
+
+a {
+  color: var(--ws-link);
+}
+
+code {
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  background: var(--ws-elevated);
+  color: var(--ws-text-default);
+  font-family: var(--ws-font-mono);
+  font-size: 0.9em;
+}
+
+.lede {
+  font-size: var(--ws-text-lg);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--ws-accent-border);
+  border-radius: 999px;
+  background: var(--ws-accent-tint);
+  color: var(--ws-accent-text);
+  font-size: var(--ws-text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ws-text-sm);
+}
+
+th,
+td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--ws-hairline);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--ws-text-subtle);
+  font-weight: var(--ws-weight-medium);
+}
+
+td code {
+  white-space: nowrap;
+}
+
+.limitations {
+  padding-left: 1.1rem;
+  color: var(--ws-text-subtle);
+  line-height: var(--ws-leading-prose);
+}
+
+.limitations li {
+  margin-bottom: 0.5rem;
+}
+
+.tableWrap {
+  /* Wide content scrolls inside its own container; the page never scrolls sideways. */
+  overflow-x: auto;
+}

@@ -1,0 +1,158 @@
+/**
+ * Button.
+ *
+ * The custom properties declared at the top of .button are this component's fine
+ * customisation surface: override them on a wrapper to adjust one button without
+ * reaching for the semantic layer that every other component shares.
+ *
+ * Only semantic and component tokens appear below. Referencing a primitive here is a
+ * Stylelint error.
+ */
+
+.button {
+  --ws-button-height: 2.25rem;
+  --ws-button-padding-x: 0.875rem;
+  --ws-button-gap: 0.5rem;
+  --ws-button-radius: 0.375rem;
+  --ws-button-font-size: var(--ws-text-base);
+  --ws-button-bg: transparent;
+  --ws-button-fg: var(--ws-text-default);
+  --ws-button-border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ws-button-gap);
+  height: var(--ws-button-height);
+  padding-inline: var(--ws-button-padding-x);
+  border: 1px solid var(--ws-button-border);
+  border-radius: var(--ws-button-radius);
+  background: var(--ws-button-bg);
+  color: var(--ws-button-fg);
+
+  /* `font: inherit` rather than a font token: the library ships no typography, so a
+     button should speak in whatever voice the surrounding project uses. */
+  font: inherit;
+  font-size: var(--ws-button-font-size);
+  font-weight: var(--ws-weight-medium);
+  line-height: var(--ws-leading-tight);
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+
+  /*
+   * Properties are named individually rather than with `all`, and the press uses
+   * transform, which skips layout and paint. 160ms is the top of the range for press
+   * feedback; colour follows the faster duration because it is a smaller change.
+   */
+  transition:
+    transform 160ms var(--ws-ease-enter),
+    background-color var(--ws-duration-fast) var(--ws-ease-enter),
+    border-color var(--ws-duration-fast) var(--ws-ease-enter),
+    color var(--ws-duration-fast) var(--ws-ease-enter);
+}
+
+.button > svg {
+  flex-shrink: 0;
+  width: var(--ws-icon-size);
+  height: var(--ws-icon-size);
+  stroke-width: var(--ws-icon-stroke);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--ws-focus);
+  outline-offset: 2px;
+}
+
+/*
+ * Scaling the button scales its label and icons with it, which is what makes the press
+ * read as physical rather than as a colour flicker.
+ *
+ * :active needs no hover gating — it is a real press on touch as well as with a mouse.
+ */
+.button:active:not([data-disabled]) {
+  transform: scale(0.97);
+}
+
+/*
+ * Keyed off Base UI's data attribute, not :disabled. With `nativeButton={false}` the
+ * rendered element has no native disabled state, so :disabled would silently not match.
+ */
+.button[data-disabled] {
+  cursor: not-allowed;
+  color: var(--ws-text-inactive);
+  background: var(--ws-control);
+  border-color: transparent;
+}
+
+/* Variants ---------------------------------------------------------------- */
+
+.solid {
+  --ws-button-bg: var(--ws-accent);
+  --ws-button-fg: var(--ws-on-accent);
+}
+
+.soft {
+  --ws-button-bg: var(--ws-accent-tint);
+  --ws-button-fg: var(--ws-accent-text);
+}
+
+.ghost {
+  --ws-button-fg: var(--ws-text-default);
+}
+
+/*
+ * Hover is gated: a touch device fires a synthetic hover on tap, which would leave a
+ * button stuck in its hover state after the finger lifts.
+ */
+@media (hover: hover) and (pointer: fine) {
+  .solid:hover:not([data-disabled]) {
+    --ws-button-bg: var(--ws-accent-hover);
+  }
+
+  .soft:hover:not([data-disabled]) {
+    --ws-button-bg: var(--ws-accent-border);
+  }
+
+  .ghost:hover:not([data-disabled]) {
+    --ws-button-bg: var(--ws-control-hover);
+  }
+}
+
+/* Sizes ------------------------------------------------------------------- */
+
+.sm {
+  --ws-button-height: 1.75rem;
+  --ws-button-padding-x: 0.625rem;
+  --ws-button-gap: 0.375rem;
+  --ws-button-font-size: var(--ws-text-sm);
+}
+
+.md {
+  --ws-button-height: 2.25rem;
+  --ws-button-padding-x: 0.875rem;
+  --ws-button-font-size: var(--ws-text-base);
+}
+
+.lg {
+  --ws-button-height: 2.75rem;
+  --ws-button-padding-x: 1.25rem;
+  --ws-button-font-size: var(--ws-text-lg);
+}
+
+/*
+ * Reduced motion means gentler, not none. The colour transitions stay, because they aid
+ * comprehension and involve no movement; only the press transform is dropped.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition:
+      background-color var(--ws-duration-fast) var(--ws-ease-enter),
+      border-color var(--ws-duration-fast) var(--ws-ease-enter),
+      color var(--ws-duration-fast) var(--ws-ease-enter);
+  }
+
+  .button:active:not([data-disabled]) {
+    transform: none;
+  }
+}

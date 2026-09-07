@@ -1,0 +1,71 @@
+import { defineConfig } from 'tsdown'
+
+export default defineConfig({
+  /*
+   * Object form, so each component gets a flat, stable output name (dist/button.js) that
+   * matches its subpath in the exports map. The array form would emit nested paths and
+   * collide two files both named index.ts.
+   */
+  entry: {
+    index: 'src/index.ts',
+    button: 'src/components/button/index.ts',
+    // Server-safe: plain data, no components. Kept out of the "use client" injection so
+    // React Server Components can read it as real values rather than client references.
+    meta: 'src/meta.ts',
+  },
+
+  // ESM only. Publishing CJS as well would create a dual package hazard, where part of
+  // the graph loads one copy and part the other.
+  format: 'esm',
+  platform: 'neutral',
+  dts: true,
+  clean: true,
+  sourcemap: true,
+
+  /*
+   * `deps.neverBundle`, not `external` — the latter is deprecated, and setting both
+   * throws. The regexes matter: Base UI and Motion are imported by subpath, and a bare
+   * string does not match `@base-ui/react/button`.
+   */
+  deps: {
+    neverBundle: [
+      'react',
+      'react-dom',
+      'react/jsx-runtime',
+      '@base-ui/react',
+      /^@base-ui\/react\//,
+      'motion',
+      /^motion\//,
+      'lucide-react',
+    ],
+  },
+
+  css: {
+    transformer: 'lightningcss',
+    fileName: 'styles.css',
+    // One stylesheet, matching the single "./styles.css" export.
+    splitting: false,
+    minify: true,
+    // Keeps `import './styles.css'` in the JS output. Together with "sideEffects" in
+    // package.json, this is what stops a bundler dropping the stylesheet entirely.
+    inject: true,
+    modules: {
+      localsConvention: 'camelCase',
+      // A string pattern, not a function: functions are PostCSS-only, not lightningcss.
+      generateScopedName: 'ws_[hash]_[local]',
+    },
+  },
+
+  // Package validation, which recovers most of what publishing early would have caught.
+  publint: 'ci-only',
+  attw: 'ci-only',
+
+  /*
+   * NOTE: there is deliberately no `banner` here for the "use client" directive.
+   * Rolldown's dts plugin copies the banner into the generated .d.ts files, which is
+   * invalid TypeScript, and a banner function cannot tell a .js chunk from its .d.ts.
+   * See https://github.com/sxzz/rolldown-plugin-dts/issues/174.
+   *
+   * The directive is injected by scripts/inject-use-client.ts after this build.
+   */
+})

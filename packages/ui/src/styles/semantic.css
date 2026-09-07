@@ -1,0 +1,99 @@
+/**
+ * Semantic tokens: what components actually consume.
+ *
+ * These mappings are identical in both colour modes. Only the primitive values behind
+ * them change, which is why dark mode needs no semantic redefinition at all.
+ *
+ * Components reference these, never the primitives. Enforced by Stylelint.
+ */
+
+:root {
+  /* surfaces */
+  --ws-canvas: var(--ws-neutral-1);
+  --ws-base: var(--ws-neutral-2);
+  --ws-elevated: var(--ws-neutral-3);
+  --ws-recessed: var(--ws-neutral-4);
+  --ws-tint: var(--ws-neutral-3);
+  --ws-contrast: var(--ws-neutral-12);
+
+  /* controls */
+  --ws-control: var(--ws-neutral-3);
+  --ws-control-hover: var(--ws-neutral-4);
+  --ws-control-active: var(--ws-neutral-5);
+
+  /* borders */
+  --ws-hairline: var(--ws-neutral-6);
+  --ws-line: var(--ws-neutral-7);
+  --ws-focus: var(--ws-sakura-8);
+
+  /* text */
+  --ws-text-strong: var(--ws-neutral-12);
+  --ws-text-default: var(--ws-neutral-12);
+  --ws-text-subtle: var(--ws-neutral-11);
+  --ws-text-placeholder: var(--ws-neutral-10);
+  --ws-text-inactive: var(--ws-neutral-8);
+  --ws-text-inverse: var(--ws-neutral-1);
+
+  /* accent — the customisable set. Override these six, not the sakura scale. */
+  --ws-accent: var(--ws-sakura-9);
+  --ws-accent-hover: var(--ws-sakura-10);
+  --ws-accent-tint: var(--ws-sakura-3);
+  --ws-accent-border: var(--ws-sakura-7);
+  --ws-accent-text: var(--ws-sakura-11);
+  --ws-on-accent: var(--ws-white);
+
+  /* status */
+  --ws-info: var(--ws-blue-9);
+  --ws-info-tint: var(--ws-blue-3);
+  --ws-info-border: var(--ws-blue-7);
+  --ws-info-text: var(--ws-blue-11);
+  --ws-on-info: var(--ws-white);
+
+  --ws-success: var(--ws-green-9);
+  --ws-success-tint: var(--ws-green-3);
+  --ws-success-border: var(--ws-green-7);
+  --ws-success-text: var(--ws-green-11);
+  --ws-on-success: var(--ws-white);
+
+  --ws-warning: var(--ws-yellow-9);
+  --ws-warning-tint: var(--ws-yellow-3);
+  --ws-warning-border: var(--ws-yellow-7);
+  --ws-warning-text: var(--ws-yellow-11);
+
+  /*
+   * NOT A BUG. Do not "fix" this to var(--ws-text-inverse) or make it invert.
+   *
+   * This is the only token in the system with a fixed value across both colour modes.
+   * Yellow's scale uses a bright profile, so --ws-warning (yellow-9) is a light yellow in
+   * dark mode too. Text on top of it must therefore be dark in both modes. This specific
+   * brown was chosen deliberately over plain black, and contrasts at 8.2:1 against
+   * yellow-9. There is a test asserting exactly that.
+   */
+  --ws-on-warning: #423000;
+
+  --ws-danger: var(--ws-red-9);
+  --ws-danger-tint: var(--ws-red-3);
+  --ws-danger-border: var(--ws-red-7);
+  --ws-danger-text: var(--ws-red-11);
+  --ws-on-danger: var(--ws-white);
+
+  /* link */
+  --ws-link: var(--ws-blue-11);
+
+  /* shadows — not derived from a scale, because a dark-mode shadow is not a lightened
+     light-mode shadow. Own alpha, different values per mode. */
+  --ws-shadow-edge: oklch(0% 0 0 / 0.12);
+  --ws-shadow-drop: oklch(0% 0 0 / 0.08);
+}
+
+[data-theme="dark"] {
+  --ws-shadow-edge: oklch(100% 0 0 / 0.1);
+  --ws-shadow-drop: oklch(0% 0 0 / 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ws-shadow-edge: oklch(100% 0 0 / 0.1);
+    --ws-shadow-drop: oklch(0% 0 0 / 0.3);
+  }
+}
