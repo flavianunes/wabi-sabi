@@ -28,6 +28,7 @@ scripts/         build and guardrail scripts, run directly by Node (type strippi
 | `pnpm lint` | Biome + Stylelint |
 | `pnpm smoke` | Validates `dist/` after a build |
 | `pnpm dev` | Builds the library, then runs the docs site |
+| `pnpm new-component <name>` | Scaffolds a component |
 
 The docs site imports the library by its published subpaths and resolves them through
 `packages/ui/dist`, which is deliberate — it makes the docs a real consumer, and is what
@@ -35,7 +36,6 @@ validates the packaging. The consequence is that **the library must be built bef
 docs app can typecheck or build**. `pnpm typecheck` and `pnpm dev` handle that themselves;
 CI builds before typechecking for the same reason. A bare `tsc --noEmit` in `apps/docs`
 on a fresh clone will report the library as a missing module.
-| `pnpm new-component <name>` | Scaffolds a component |
 
 ## Critical rules
 
