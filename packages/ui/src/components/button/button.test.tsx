@@ -87,6 +87,26 @@ describe('Button', () => {
     expect(screen.getByRole('button').className).toMatch(/custom/)
   })
 
+  // Disabled is a state, not a variant: a filled disabled ghost button reads as a solid
+  // one. Regression guard for a blanket background on the disabled rule.
+  it('keeps each variant distinguishable while disabled', () => {
+    const { container } = render(
+      <>
+        <Button variant="ghost" disabled>
+          Ghost
+        </Button>
+        <Button variant="solid" disabled>
+          Solid
+        </Button>
+      </>,
+    )
+
+    const [ghost, solid] = [...container.querySelectorAll('button')]
+    expect(ghost?.className).toMatch(/ghost/)
+    expect(solid?.className).toMatch(/solid/)
+    expect(ghost?.className).not.toBe(solid?.className)
+  })
+
   it('has no accessibility violations', async () => {
     const { container } = render(<Button>Save</Button>)
 

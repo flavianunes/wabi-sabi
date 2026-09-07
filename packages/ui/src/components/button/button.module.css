@@ -81,8 +81,21 @@
 .button[data-disabled] {
   cursor: not-allowed;
   color: var(--ws-text-inactive);
-  background: var(--ws-control);
   border-color: transparent;
+}
+
+/*
+ * Disabled is a state, not a variant, so each variant keeps its own weight while
+ * disabled. A filled disabled ghost button would read as a solid one, which is why the
+ * fill is set per variant rather than on .button above.
+ */
+.solid[data-disabled],
+.soft[data-disabled] {
+  --ws-button-bg: var(--ws-control);
+}
+
+.ghost[data-disabled] {
+  --ws-button-bg: transparent;
 }
 
 /* Variants ---------------------------------------------------------------- */
