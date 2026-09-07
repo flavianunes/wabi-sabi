@@ -15,7 +15,7 @@
     "build:docs": "pnpm --filter @wabi-sabi/ui build && pnpm --filter docs build",
     "dev": "pnpm --filter @wabi-sabi/ui build && pnpm --filter docs dev",
     "test": "pnpm --filter @wabi-sabi/ui test",
-    "typecheck": "pnpm -r typecheck",
+    "typecheck": "pnpm build && pnpm -r typecheck",
     "lint": "biome ci . && stylelint \"packages/ui/src/**/*.css\"",
     "lint:css": "stylelint \"packages/ui/src/**/*.css\"",
     "format": "biome check --write .",

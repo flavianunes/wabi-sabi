@@ -30,15 +30,17 @@ jobs:
       - name: Lint CSS
         run: pnpm exec stylelint "packages/ui/src/**/*.css"
 
+      # The library is built before typechecking, because the documentation app imports
+      # it by its published subpaths and resolves them through dist. That is deliberate —
+      # it is what makes the docs a real consumer — so its typecheck needs dist to exist.
+      - name: Build library
+        run: pnpm build
+
       - name: Typecheck
         run: pnpm -r typecheck
 
       - name: Test
         run: pnpm --filter @wabi-sabi/ui test
-
-      # Builds the library, then injects the "use client" directive.
-      - name: Build library
-        run: pnpm build
 
       # Reads dist/ and fails if the directive is missing or hoisted below an import, if a
       # declaration file carries it, if an exports path does not resolve, or if a
