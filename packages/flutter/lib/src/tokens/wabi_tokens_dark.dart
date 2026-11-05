@@ -9,9 +9,9 @@ import 'dart:ui';
 class WabiTokensDark {
     WabiTokensDark._();
 
-    static const accent = Color(0xFF9E507A); /** The customisable set is the six accent tokens. Override those, not the sakura scale. */
+    static const accent = Color(0xFF9E507A);
     static const accentBorder = Color(0xFF6D3F57);
-    static const accentHover = Color(0xFF8B506F); /** Step 8, not 10, in dark mode: white on sakura-dark-10 is 4.38:1, under AA. Hover darkens the fill here instead of lightening it. */
+    static const accentHover = Color(0xFF8B506F);
     static const accentText = Color(0xFFDC9ABB);
     static const accentTint = Color(0xFF331D28);
     static const base = Color(0xFF1A1919);
@@ -25,20 +25,20 @@ class WabiTokensDark {
     static const dangerText = Color(0xFFFC8D81);
     static const dangerTint = Color(0xFF3D1815);
     static const elevated = Color(0xFF262523);
-    static const focus = Color(0xFF9E507A); /** Focus ring. Step 9, not 8: a focus indicator needs 3:1 against the surface it sits on (WCAG 1.4.11). */
+    static const focus = Color(0xFF9E507A);
     static const hairline = Color(0xFF43413E);
     static const info = Color(0xFF466DB5);
     static const infoBorder = Color(0xFF384F7A);
     static const infoText = Color(0xFF90B1EE);
     static const infoTint = Color(0xFF1A2539);
     static const line = Color(0xFF524F4C);
-    static const lineStrong = Color(0xFF736E68); /** Borders that identify an interactive control, such as a text field. Needs 3:1 against its surface; --line is for decorative borders. */
+    static const lineStrong = Color(0xFF736E68);
     static const link = Color(0xFF90B1EE);
     static const onAccent = Color(0xFFFFFFFF);
     static const onDanger = Color(0xFFFFFFFF);
     static const onInfo = Color(0xFFFFFFFF);
     static const onSuccess = Color(0xFFFFFFFF);
-    static const onWarning = Color(0xFF423000); /** NOT A BUG. The only colour fixed across modes: yellow-9 is bright in both, so text on it is dark in both. 8.2:1 on yellow-9. */
+    static const onWarning = Color(0xFF423000);
     static const recessed = Color(0xFF2F2D2B);
     static const shadowDrop = Color(0x4D000000);
     static const shadowEdge = Color(0x1AFFFFFF);

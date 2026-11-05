@@ -436,7 +436,6 @@ function buildBaseTokens(themes: Record<Theme, ThemeTokens>): void {
     join(FLUTTER_TOKENS, 'wabi_base_tokens.dart'),
     `${DART_HEADER}
 
-import 'package:flutter/physics.dart';
 import 'package:flutter/widgets.dart';
 
 ${body}
@@ -461,7 +460,13 @@ async function buildDartConstants(): Promise<void> {
             // class, and the base tokens are theme-independent: they live in
             // wabi_base_tokens.dart with proper Dart types.
             filter: (token) => isSemantic(token),
-            options: { className, showFileHeader: false },
+            options: {
+              className,
+              showFileHeader: false,
+              // No per-token comments: the template places them mid-declaration, and the
+              // descriptions already document WabiColors.
+              formatting: { commentStyle: 'none' },
+            },
           },
         ],
       },

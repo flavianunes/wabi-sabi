@@ -2,7 +2,6 @@
 //
 // dart format off
 
-import 'package:flutter/physics.dart';
 import 'package:flutter/widgets.dart';
 
 /// 4px spacing scale, in logical pixels.

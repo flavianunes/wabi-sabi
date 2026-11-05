@@ -1,0 +1,18 @@
+name: wabi_sabi
+description: Flutter components for the wabi-sabi design system, themed from the same DTCG tokens as the React library.
+version: 0.1.0
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
