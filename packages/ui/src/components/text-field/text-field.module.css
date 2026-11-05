@@ -1,0 +1,87 @@
+/**
+ * TextField.
+ *
+ * Component tokens at the top of .textField are its fine customisation surface. Only
+ * semantic and component tokens appear below; a primitive here is a Stylelint error.
+ *
+ * Base UI sets data-disabled, data-invalid and data-focused on every part of the field, so
+ * states are keyed off those rather than pseudo-classes.
+ */
+
+.textField {
+  --ws-text-field-bg: var(--ws-canvas);
+  --ws-text-field-border: var(--ws-line-strong);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-text-field-gap);
+}
+
+.label {
+  color: var(--ws-text-default);
+  font-size: var(--ws-text-sm);
+  font-weight: var(--ws-weight-medium);
+  line-height: var(--ws-leading-tight);
+}
+
+.control {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--ws-text-field-height);
+  padding-inline: var(--ws-text-field-padding-x);
+  border: var(--ws-border-width) solid var(--ws-text-field-border);
+  border-radius: var(--ws-radius-md);
+  background: var(--ws-text-field-bg);
+  color: var(--ws-text-default);
+  font: inherit;
+  font-size: var(--ws-text-base);
+  line-height: var(--ws-leading-base);
+  transition: border-color var(--ws-duration-fast) var(--ws-ease-enter);
+}
+
+.control::placeholder {
+  color: var(--ws-text-placeholder);
+}
+
+.control:focus-visible {
+  outline: var(--ws-focus-ring-width) solid var(--ws-focus);
+  outline-offset: var(--ws-focus-ring-offset);
+}
+
+/* The border is the only non-text signal of the error, so it meets 3:1 on the canvas. */
+.control[data-invalid] {
+  --ws-text-field-border: var(--ws-danger);
+}
+
+.control[data-disabled] {
+  --ws-text-field-bg: var(--ws-control);
+  --ws-text-field-border: var(--ws-hairline);
+
+  color: var(--ws-text-inactive);
+  cursor: not-allowed;
+}
+
+.label[data-disabled] {
+  color: var(--ws-text-inactive);
+}
+
+.helper,
+.error {
+  margin: 0;
+  font-size: var(--ws-text-sm);
+  line-height: var(--ws-leading-base);
+}
+
+.helper {
+  color: var(--ws-text-subtle);
+}
+
+.error {
+  color: var(--ws-danger-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control {
+    transition: none;
+  }
+}

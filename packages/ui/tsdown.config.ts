@@ -9,6 +9,7 @@ export default defineConfig({
   entry: {
     index: 'src/index.ts',
     button: 'src/components/button/index.ts',
+    'text-field': 'src/components/text-field/index.ts',
     // Server-safe: plain data, no components. Kept out of the "use client" injection so
     // React Server Components can read it as real values rather than client references.
     meta: 'src/meta.ts',

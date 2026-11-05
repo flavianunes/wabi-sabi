@@ -113,3 +113,17 @@ abstract final class WabiButtonTokens {
   /// Minimum touch target height, WCAG 2.5.5.
   static const double hitArea = 44;
 }
+
+/// Text field component tokens.
+abstract final class WabiTextFieldTokens {
+  static const double height = 44;
+  static const double paddingX = 12;
+  static const double gap = 4;
+}
+
+/// Card component tokens.
+abstract final class WabiCardTokens {
+  static const double padding = 16;
+  static const double gap = 12;
+  static const double radius = 6;
+}

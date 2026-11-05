@@ -380,6 +380,8 @@ const DART_GROUPS: Record<string, { className: string; doc: string }> = {
   spring: { className: 'WabiSpring', doc: 'Spring for physical, untimed movement.' },
   distance: { className: 'WabiDistance', doc: 'Offsets for movement accompanying a fade.' },
   button: { className: 'WabiButtonTokens', doc: 'Button component tokens.' },
+  'text-field': { className: 'WabiTextFieldTokens', doc: 'Text field component tokens.' },
+  card: { className: 'WabiCardTokens', doc: 'Card component tokens.' },
 }
 
 function dartIdentifier(token: TransformedToken): string {

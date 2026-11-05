@@ -11,9 +11,14 @@ export default function HomePage() {
       </p>
 
       <h2>Components</h2>
-      <p>
-        <Link href="/components/button">Button</Link>
-      </p>
+      <ul>
+        <li>
+          <Link href="/components/button">Button</Link>
+        </li>
+        <li>
+          <Link href="/components/text-field">TextField</Link>
+        </li>
+      </ul>
     </main>
   )
 }

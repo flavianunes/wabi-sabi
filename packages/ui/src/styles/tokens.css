@@ -262,6 +262,16 @@
   --ws-button-radius: var(--ws-radius-md);
   --ws-button-hit-area: 2.75rem;
 
+  /* text-field */
+  --ws-text-field-height: 2.75rem;
+  --ws-text-field-padding-x: var(--ws-space-3);
+  --ws-text-field-gap: var(--ws-space-1);
+
+  /* card */
+  --ws-card-padding: var(--ws-space-4);
+  --ws-card-gap: var(--ws-space-3);
+  --ws-card-radius: var(--ws-radius-md);
+
   /* semantic — light */
   --ws-canvas: var(--ws-neutral-light-1);
   --ws-base: var(--ws-neutral-light-2);

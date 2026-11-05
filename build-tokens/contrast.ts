@@ -44,6 +44,9 @@ const PAIRS: Pair[] = [
   ['focus', 'base', AA_UI],
   ['line-strong', 'canvas', AA_UI],
   ['line-strong', 'base', AA_UI],
+  // An invalid field's border is the only non-text signal of the error state.
+  ['danger', 'canvas', AA_UI],
+  ['danger', 'base', AA_UI],
 ]
 
 const themes = {
