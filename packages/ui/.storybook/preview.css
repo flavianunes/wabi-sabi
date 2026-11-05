@@ -1,0 +1,13 @@
+/*
+ * The canvas around each story, from the same semantic tokens the components use, so the
+ * theme toggle switches the page as well as the component.
+ */
+
+body {
+  margin: 0;
+  background: var(--ws-canvas);
+  color: var(--ws-text-default);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", roboto, sans-serif;
+  font-size: var(--ws-text-base);
+  line-height: var(--ws-leading-base);
+}

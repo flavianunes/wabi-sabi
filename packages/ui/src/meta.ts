@@ -11,4 +11,6 @@
  */
 
 export { meta as buttonMeta } from './components/button/meta'
+export { meta as cardMeta } from './components/card/meta'
+export { meta as textFieldMeta } from './components/text-field/meta'
 export type { ComponentMeta, ComponentStatus } from './lib/meta'

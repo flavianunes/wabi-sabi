@@ -48,7 +48,7 @@ export default {
         'declaration-property-value-disallowed-list': [
           {
             '/.*/': [
-              String.raw`/var\(\s*--ws-(${PRIMITIVE_SCALES})-\d{1,2}\b/`,
+              String.raw`/var\(\s*--ws-(${PRIMITIVE_SCALES})-(light|dark)-\d{1,2}\b/`,
               String.raw`/var\(\s*--ws-(white|black)\b/`,
             ],
           },

@@ -59,7 +59,7 @@ for (const path of exportPaths) {
  * client module into an opaque client reference — fine for a component, broken for plain
  * data a Server Component needs to read. Kept in sync with scripts/inject-use-client.ts.
  */
-const SERVER_SAFE_ENTRIES = new Set(['meta.js'])
+const SERVER_SAFE_ENTRIES = new Set(['meta.js', 'tokens.js'])
 
 /**
  * Everything a server-safe entry reaches, following its relative imports. A one-line
@@ -148,7 +148,10 @@ if (existsSync(cssPath)) {
   const css = await readFile(cssPath, 'utf8')
   check(css.trim().length > 0, 'dist/styles.css is empty')
   check(css.includes('--ws-accent'), 'dist/styles.css is missing the semantic token layer')
-  check(css.includes('--ws-neutral-1'), 'dist/styles.css is missing the primitive token layer')
+  check(
+    css.includes('--ws-neutral-light-1') && css.includes('--ws-neutral-dark-1'),
+    'dist/styles.css is missing the primitive token layer',
+  )
   check(
     /ws_[a-z0-9]+_button/i.test(css),
     'dist/styles.css has no scoped Button class, so CSS Modules did not run',
@@ -183,10 +186,12 @@ check(
   !allJs.some((source) => source.includes('@base-ui-components/react')),
   'dist references @base-ui-components/react, which is the obsolete package',
 )
-// A dependency that stayed external is imported, never inlined. This string appears in
-// Base UI's own source, so finding it in our output means it was bundled in.
+// A dependency that stayed external is imported, never inlined. useRenderElement is Base
+// UI's internal rendering hook: it appears in every Base UI component's source and never in
+// ours, so finding it in our output means Base UI was bundled in. (A public prop name would
+// not do — components pass those through.)
 check(
-  !allJs.some((source) => source.includes('focusableWhenDisabled')),
+  !allJs.some((source) => source.includes('useRenderElement')),
   'dist appears to contain inlined Base UI source, so it was not externalised',
 )
 

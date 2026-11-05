@@ -5,7 +5,7 @@ file covers what is specific to writing a component.
 
 ## Definition of done
 
-A component is finished when all six are true. Not five.
+A component is finished when all seven are true. Not six.
 
 1. The implementation handles entering, leaving, and being interrupted halfway — for
    components that mount and unmount. A component that is always mounted (Button, Input)
@@ -13,8 +13,12 @@ A component is finished when all six are true. Not five.
 2. `*.module.css` uses only semantic or component tokens.
 3. A behaviour test and an accessibility test with axe.
 4. `meta.ts` with `status`, `since`, and `knownLimitations`.
-5. A documentation page with a live example and a props table.
-6. Keyboard navigation checked by hand and written down on that page.
+5. A Storybook story per variant and state, with a usage page (`usagePage` in
+   `.storybook/usage-page.tsx`: when to use, when not to). Stories run as browser tests
+   with axe in both themes, so a story is also an accessibility test.
+6. Keyboard navigation checked by hand and written down in the usage page.
+7. The Flutter mirror in `packages/flutter`, with the same conceptual API (see the root
+   AGENTS.md).
 
 ## Files
 
@@ -26,6 +30,7 @@ src/components/<kebab-name>/
 ├── <kebab-name>.tsx    implementation
 ├── <kebab-name>.module.css
 ├── <kebab-name>.test.tsx
+├── <kebab-name>.stories.tsx
 └── meta.ts             status and known limitations
 ```
 
@@ -83,7 +88,9 @@ the semantic layer every other component shares.
 ## Commands
 
 ```bash
-pnpm --filter @wabi-sabi/ui test        # vitest, including axe
+pnpm --filter @wabi-sabi/ui test        # vitest unit tests, including axe (happy-dom)
+pnpm --filter @wabi-sabi/ui test:storybook  # every story in Chromium, axe, both themes
+pnpm --filter @wabi-sabi/ui storybook   # Storybook on :6006
 pnpm --filter @wabi-sabi/ui build       # tsdown, then the directive injection
 pnpm --filter @wabi-sabi/ui typecheck
 ```

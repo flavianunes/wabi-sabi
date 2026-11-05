@@ -1,0 +1,80 @@
+{
+  "button": {
+    "$description": "Button sizes. Values off the 4px scale live here as component tokens, so the component CSS holds no literal sizes.",
+    "height": {
+      "$type": "dimension",
+      "sm": {
+        "$value": "28px"
+      },
+      "md": {
+        "$value": "36px"
+      },
+      "lg": {
+        "$value": "44px"
+      }
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "sm": {
+        "$value": "10px"
+      },
+      "md": {
+        "$value": "14px"
+      },
+      "lg": {
+        "$value": "20px"
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "sm": {
+        "$value": "6px"
+      },
+      "md": {
+        "$value": "{space.2}"
+      },
+      "lg": {
+        "$value": "{space.2}"
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.md}"
+    },
+    "hit-area": {
+      "$type": "dimension",
+      "$value": "44px",
+      "$description": "Minimum touch target height, WCAG 2.5.5."
+    }
+  },
+  "text-field": {
+    "$description": "Text field geometry. 44px tall to meet the minimum touch target.",
+    "height": {
+      "$type": "dimension",
+      "$value": "44px"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{space.3}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.1}"
+    }
+  },
+  "card": {
+    "$description": "Card geometry.",
+    "padding": {
+      "$type": "dimension",
+      "$value": "{space.4}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{space.3}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{radius.md}"
+    }
+  }
+}

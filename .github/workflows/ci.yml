@@ -10,18 +10,39 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
+  # The generated token files are committed, so the Flutter job can run without Node.
+  # This job proves they match the JSON: rebuild, then fail on any difference.
+  tokens:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-
       - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: pnpm
+      - run: pnpm install --frozen-lockfile
 
+      # Builds every platform's tokens and fails if a semantic pair misses WCAG AA.
+      - name: Build tokens and check contrast
+        run: pnpm tokens
+
+      - name: Generated tokens are up to date
+        run: |
+          if ! git diff --exit-code; then
+            echo "::error::Generated tokens differ from /tokens. Run pnpm tokens and commit the result."
+            exit 1
+          fi
+
+  react:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
       - run: pnpm install --frozen-lockfile
 
       - name: Lint and format
@@ -39,8 +60,19 @@ jobs:
       - name: Typecheck
         run: pnpm -r typecheck
 
-      - name: Test
+      - name: Unit tests
         run: pnpm --filter @wabi-sabi/ui test
+
+      # Every story runs in Chromium, once per theme, with axe failing on any violation —
+      # including colour contrast, which happy-dom cannot compute.
+      - name: Install Chromium
+        run: pnpm --filter @wabi-sabi/ui exec playwright install --with-deps chromium
+
+      - name: Story tests (both themes)
+        run: pnpm test:storybook
+
+      - name: Build Storybook
+        run: pnpm build:storybook
 
       # Reads dist/ and fails if the directive is missing or hoisted below an import, if a
       # declaration file carries it, if an exports path does not resolve, or if a
@@ -58,3 +90,72 @@ jobs:
       # imported client component, with no transpilePackages.
       - name: Build documentation
         run: pnpm --filter docs build
+
+  # Visual regression for every story, in both themes (Chromatic modes in preview.tsx).
+  chromatic:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # Chromatic compares against the baseline from git history.
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm tokens
+
+      - name: Publish to Chromatic
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        run: |
+          # Pull requests from forks get no secrets; skip loudly rather than fail.
+          if [ -z "$CHROMATIC_PROJECT_TOKEN" ]; then
+            echo "::warning::CHROMATIC_PROJECT_TOKEN is not set; skipping visual regression."
+            exit 0
+          fi
+          pnpm --filter @wabi-sabi/ui exec chromatic \
+            --build-script-name build:storybook \
+            --exit-zero-on-changes \
+            --only-changed
+
+  flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.9
+          cache: true
+
+      # The root pubspec is a pub workspace: one get resolves both Dart packages.
+      - run: flutter pub get
+
+      # Generated token files opt out with `dart format off`; everything else must be
+      # formatted.
+      - name: Format
+        run: >
+          dart format --output=none --set-exit-if-changed
+          packages/flutter/lib/wabi_sabi.dart
+          packages/flutter/lib/src/components
+          packages/flutter/lib/src/theme
+          packages/flutter/test
+          packages/flutter_widgetbook/lib
+          packages/flutter_widgetbook/test
+
+      - name: Analyze
+        run: flutter analyze packages/flutter packages/flutter_widgetbook
+
+      # Widget tests plus meetsGuideline (contrast, labelled and sized tap targets) in
+      # both themes.
+      - name: Test the package
+        working-directory: packages/flutter
+        run: flutter test
+
+      - name: Test the Widgetbook
+        working-directory: packages/flutter_widgetbook
+        run: flutter test

@@ -15,3 +15,8 @@ next-env.d.ts
 
 coverage/
 .turbo/
+storybook-static
+
+# Dart and Flutter
+.dart_tool/
+build/

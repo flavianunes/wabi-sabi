@@ -1,0 +1,69 @@
+name: Pages
+
+# Publishes Storybook (React) and Widgetbook (Flutter) side by side on GitHub Pages:
+#   /storybook/   /widgetbook/   and an index linking both.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.9
+          cache: true
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm tokens
+
+      - name: Build Storybook
+        run: pnpm build:storybook
+
+      # Flutter web needs its own path as the base href, under the repository's Pages path.
+      - name: Build Widgetbook
+        working-directory: packages/flutter_widgetbook
+        run: |
+          flutter pub get
+          flutter build web --release --base-href "/${{ github.event.repository.name }}/widgetbook/"
+
+      - name: Assemble the site
+        run: |
+          mkdir -p site
+          cp .github/pages/index.html site/index.html
+          cp -r packages/ui/storybook-static site/storybook
+          cp -r packages/flutter_widgetbook/build/web site/widgetbook
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

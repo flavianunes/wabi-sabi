@@ -1,0 +1,657 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "Six twelve-step scales, generated in OKLCH with constant lightness and chroma profiles per step. Step roles: 1 page bg, 2 subtle bg, 3 element bg, 4 hover bg, 5 active, 6 subtle border, 7 border, 8 hover border, 9 solid fill, 10 solid hover, 11 low-contrast text, 12 high-contrast text. Step 9 is identical in both modes: it is the brand colour. Never hand-edit a value; regenerate the scale.",
+    "white": {
+      "$value": "#ffffff"
+    },
+    "black": {
+      "$value": "#000000"
+    },
+    "neutral": {
+      "$description": "Hue 70, very low chroma. Leans towards clay and wood, not beige.",
+      "light": {
+        "1": {
+          "$value": "#fdfdfc"
+        },
+        "2": {
+          "$value": "#f9f8f7"
+        },
+        "3": {
+          "$value": "#f2f0ee"
+        },
+        "4": {
+          "$value": "#ebe8e6"
+        },
+        "5": {
+          "$value": "#e3e0dd"
+        },
+        "6": {
+          "$value": "#d8d5d2"
+        },
+        "7": {
+          "$value": "#cac7c3"
+        },
+        "8": {
+          "$value": "#b5b0ac"
+        },
+        "9": {
+          "$value": "#736e68"
+        },
+        "10": {
+          "$value": "#67625d"
+        },
+        "11": {
+          "$value": "#5e5a55"
+        },
+        "12": {
+          "$value": "#302d2b"
+        }
+      },
+      "dark": {
+        "1": {
+          "$value": "#121111"
+        },
+        "2": {
+          "$value": "#1a1919"
+        },
+        "3": {
+          "$value": "#262523"
+        },
+        "4": {
+          "$value": "#2f2d2b"
+        },
+        "5": {
+          "$value": "#383634"
+        },
+        "6": {
+          "$value": "#43413e"
+        },
+        "7": {
+          "$value": "#524f4c"
+        },
+        "8": {
+          "$value": "#696561"
+        },
+        "9": {
+          "$value": "#736e68"
+        },
+        "10": {
+          "$value": "#817c77"
+        },
+        "11": {
+          "$value": "#b4b0ac"
+        },
+        "12": {
+          "$value": "#e9e7e5"
+        }
+      }
+    },
+    "sakura": {
+      "$description": "The project identity. Deliberately soft, because it is not a status colour.",
+      "light": {
+        "1": {
+          "$value": "#fffafe"
+        },
+        "2": {
+          "$value": "#fff4fb"
+        },
+        "3": {
+          "$value": "#ffe8f4"
+        },
+        "4": {
+          "$value": "#ffddee"
+        },
+        "5": {
+          "$value": "#ffd1e7"
+        },
+        "6": {
+          "$value": "#f7c5dd"
+        },
+        "7": {
+          "$value": "#ecb5d0"
+        },
+        "8": {
+          "$value": "#de99bc"
+        },
+        "9": {
+          "$value": "#9e507a"
+        },
+        "10": {
+          "$value": "#93436f"
+        },
+        "11": {
+          "$value": "#834165"
+        },
+        "12": {
+          "$value": "#432033"
+        }
+      },
+      "dark": {
+        "1": {
+          "$value": "#151012"
+        },
+        "2": {
+          "$value": "#20161b"
+        },
+        "3": {
+          "$value": "#331d28"
+        },
+        "4": {
+          "$value": "#402332"
+        },
+        "5": {
+          "$value": "#4d293c"
+        },
+        "6": {
+          "$value": "#5a3247"
+        },
+        "7": {
+          "$value": "#6d3f57"
+        },
+        "8": {
+          "$value": "#8b506f"
+        },
+        "9": {
+          "$value": "#9e507a"
+        },
+        "10": {
+          "$value": "#ae5f89"
+        },
+        "11": {
+          "$value": "#dc9abb"
+        },
+        "12": {
+          "$value": "#fddeec"
+        }
+      }
+    },
+    "blue": {
+      "$description": "Information and links.",
+      "light": {
+        "1": {
+          "$value": "#f9fdff"
+        },
+        "2": {
+          "$value": "#f1f9ff"
+        },
+        "3": {
+          "$value": "#e4f1ff"
+        },
+        "4": {
+          "$value": "#d7eaff"
+        },
+        "5": {
+          "$value": "#cae1ff"
+        },
+        "6": {
+          "$value": "#bed7ff"
+        },
+        "7": {
+          "$value": "#acc8fa"
+        },
+        "8": {
+          "$value": "#8fb1f0"
+        },
+        "9": {
+          "$value": "#466db5"
+        },
+        "10": {
+          "$value": "#3a60aa"
+        },
+        "11": {
+          "$value": "#385997"
+        },
+        "12": {
+          "$value": "#1c2d4d"
+        }
+      },
+      "dark": {
+        "1": {
+          "$value": "#0f1216"
+        },
+        "2": {
+          "$value": "#141a23"
+        },
+        "3": {
+          "$value": "#1a2539"
+        },
+        "4": {
+          "$value": "#1f2d49"
+        },
+        "5": {
+          "$value": "#243657"
+        },
+        "6": {
+          "$value": "#2d4165"
+        },
+        "7": {
+          "$value": "#384f7a"
+        },
+        "8": {
+          "$value": "#48659c"
+        },
+        "9": {
+          "$value": "#466db5"
+        },
+        "10": {
+          "$value": "#547cc5"
+        },
+        "11": {
+          "$value": "#90b1ee"
+        },
+        "12": {
+          "$value": "#d9e9ff"
+        }
+      }
+    },
+    "green": {
+      "$description": "Success.",
+      "light": {
+        "1": {
+          "$value": "#f8fff9"
+        },
+        "2": {
+          "$value": "#f0fcf1"
+        },
+        "3": {
+          "$value": "#e1f8e3"
+        },
+        "4": {
+          "$value": "#d4f3d7"
+        },
+        "5": {
+          "$value": "#c5edc9"
+        },
+        "6": {
+          "$value": "#b9e3bd"
+        },
+        "7": {
+          "$value": "#a6d6ac"
+        },
+        "8": {
+          "$value": "#85c38d"
+        },
+        "9": {
+          "$value": "#338144"
+        },
+        "10": {
+          "$value": "#217636"
+        },
+        "11": {
+          "$value": "#276b36"
+        },
+        "12": {
+          "$value": "#14361b"
+        }
+      },
+      "dark": {
+        "1": {
+          "$value": "#0e130f"
+        },
+        "2": {
+          "$value": "#131c14"
+        },
+        "3": {
+          "$value": "#172b1a"
+        },
+        "4": {
+          "$value": "#19351e"
+        },
+        "5": {
+          "$value": "#1d3f23"
+        },
+        "6": {
+          "$value": "#264b2c"
+        },
+        "7": {
+          "$value": "#305b37"
+        },
+        "8": {
+          "$value": "#3c7546"
+        },
+        "9": {
+          "$value": "#338144"
+        },
+        "10": {
+          "$value": "#439152"
+        },
+        "11": {
+          "$value": "#87c28f"
+        },
+        "12": {
+          "$value": "#d7f0d9"
+        }
+      }
+    },
+    "yellow": {
+      "$description": "The exception: yellow does not exist at low lightness, so this scale uses a bright profile. Steps 9 and 10 are light in both modes, and text on them is dark.",
+      "light": {
+        "1": {
+          "$value": "#fffdf4"
+        },
+        "2": {
+          "$value": "#fff8e8"
+        },
+        "3": {
+          "$value": "#ffefcb"
+        },
+        "4": {
+          "$value": "#fce7b4"
+        },
+        "5": {
+          "$value": "#f9de9b"
+        },
+        "6": {
+          "$value": "#f1d388"
+        },
+        "7": {
+          "$value": "#e6c36b"
+        },
+        "8": {
+          "$value": "#d6ab32"
+        },
+        "9": {
+          "$value": "#ffc807"
+        },
+        "10": {
+          "$value": "#f2bc00"
+        },
+        "11": {
+          "$value": "#876300"
+        },
+        "12": {
+          "$value": "#423000"
+        }
+      },
+      "dark": {
+        "1": {
+          "$value": "#14110c"
+        },
+        "2": {
+          "$value": "#1e190d"
+        },
+        "3": {
+          "$value": "#2f2303"
+        },
+        "4": {
+          "$value": "#3c2b00"
+        },
+        "5": {
+          "$value": "#493300"
+        },
+        "6": {
+          "$value": "#563d00"
+        },
+        "7": {
+          "$value": "#684b00"
+        },
+        "8": {
+          "$value": "#836000"
+        },
+        "9": {
+          "$value": "#ffc807"
+        },
+        "10": {
+          "$value": "#f2bc00"
+        },
+        "11": {
+          "$value": "#e1b850"
+        },
+        "12": {
+          "$value": "#ffe9b6"
+        }
+      }
+    },
+    "red": {
+      "$description": "Danger.",
+      "light": {
+        "1": {
+          "$value": "#fff9f7"
+        },
+        "2": {
+          "$value": "#fff2ee"
+        },
+        "3": {
+          "$value": "#ffe6e1"
+        },
+        "4": {
+          "$value": "#ffdbd5"
+        },
+        "5": {
+          "$value": "#ffcfc7"
+        },
+        "6": {
+          "$value": "#ffc0b6"
+        },
+        "7": {
+          "$value": "#ffaba0"
+        },
+        "8": {
+          "$value": "#ff8b7f"
+        },
+        "9": {
+          "$value": "#c03631"
+        },
+        "10": {
+          "$value": "#b42121"
+        },
+        "11": {
+          "$value": "#a02925"
+        },
+        "12": {
+          "$value": "#521613"
+        }
+      },
+      "dark": {
+        "1": {
+          "$value": "#180f0e"
+        },
+        "2": {
+          "$value": "#251412"
+        },
+        "3": {
+          "$value": "#3d1815"
+        },
+        "4": {
+          "$value": "#4e1b17"
+        },
+        "5": {
+          "$value": "#5d201b"
+        },
+        "6": {
+          "$value": "#6c2823"
+        },
+        "7": {
+          "$value": "#82332d"
+        },
+        "8": {
+          "$value": "#a64039"
+        },
+        "9": {
+          "$value": "#c03631"
+        },
+        "10": {
+          "$value": "#d1473f"
+        },
+        "11": {
+          "$value": "#fc8d81"
+        },
+        "12": {
+          "$value": "#ffdad3"
+        }
+      }
+    }
+  },
+  "space": {
+    "1": {
+      "$value": "4px"
+    },
+    "2": {
+      "$value": "8px"
+    },
+    "3": {
+      "$value": "12px"
+    },
+    "4": {
+      "$value": "16px"
+    },
+    "6": {
+      "$value": "24px"
+    },
+    "8": {
+      "$value": "32px"
+    },
+    "$type": "dimension",
+    "$description": "4px spacing scale."
+  },
+  "radius": {
+    "$type": "dimension",
+    "sm": {
+      "$value": "4px"
+    },
+    "md": {
+      "$value": "6px"
+    },
+    "full": {
+      "$value": "9999px"
+    }
+  },
+  "border": {
+    "$type": "dimension",
+    "$description": "Stroke widths. Stay in px in CSS: a border is a hairline, not a size that should scale with text.",
+    "width": {
+      "$value": "1px"
+    }
+  },
+  "focus-ring": {
+    "$type": "dimension",
+    "$description": "Focus indicator geometry, in px.",
+    "width": {
+      "$value": "2px"
+    },
+    "offset": {
+      "$value": "2px"
+    }
+  },
+  "font": {
+    "$type": "fontFamily",
+    "$description": "The library ships no fonts. Text inherits the consuming project typography; only the mono stack is named.",
+    "mono": {
+      "$value": ["ui-monospace", "sfmono-regular", "menlo", "monospace"]
+    }
+  },
+  "text": {
+    "$type": "dimension",
+    "$description": "Font sizes. Modular scale, ratio 1.2 from 16px.",
+    "xs": {
+      "$value": "11.104px"
+    },
+    "sm": {
+      "$value": "13.328px"
+    },
+    "base": {
+      "$value": "16px"
+    },
+    "lg": {
+      "$value": "19.2px"
+    },
+    "xl": {
+      "$value": "23.04px"
+    },
+    "2xl": {
+      "$value": "27.648px"
+    },
+    "3xl": {
+      "$value": "33.184px"
+    }
+  },
+  "leading": {
+    "$type": "number",
+    "tight": {
+      "$value": 1.2
+    },
+    "base": {
+      "$value": 1.5
+    },
+    "prose": {
+      "$value": 1.65
+    }
+  },
+  "weight": {
+    "$type": "fontWeight",
+    "$description": "Two weights are enough. 600 and 700 are deliberately out.",
+    "regular": {
+      "$value": 400
+    },
+    "medium": {
+      "$value": 500
+    }
+  },
+  "icon": {
+    "$description": "stroke-width is a CSS property, not only an SVG attribute, so icon stroke weight is controlled globally by token.",
+    "size": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "stroke": {
+      "$type": "number",
+      "$value": 1.25
+    }
+  },
+  "duration": {
+    "$type": "duration",
+    "instant": {
+      "$value": "80ms"
+    },
+    "fast": {
+      "$value": "150ms"
+    },
+    "base": {
+      "$value": "250ms"
+    },
+    "slow": {
+      "$value": "400ms"
+    }
+  },
+  "ease": {
+    "$type": "cubicBezier",
+    "$description": "There is deliberately no ease-in curve: it starts slow, delaying the moment the user is watching.",
+    "enter": {
+      "$value": [0.23, 1, 0.32, 1],
+      "$description": "Entering decelerates into place."
+    },
+    "exit": {
+      "$value": [0.23, 1, 0.32, 1],
+      "$description": "Leaving also decelerates."
+    },
+    "move": {
+      "$value": [0.77, 0, 0.175, 1],
+      "$description": "For something moving or morphing on screen, rather than arriving or leaving."
+    }
+  },
+  "spring": {
+    "$type": "spring",
+    "$description": "For movement that should feel physical rather than timed. CSS has no spring, so a linear() approximation is carried in $extensions.",
+    "$value": {
+      "stiffness": 400,
+      "damping": 30,
+      "mass": 0.6
+    },
+    "$extensions": {
+      "dev.wabi-sabi": {
+        "cssLinear": "linear(0, 0.006, 0.025, 0.101, 0.539, 0.826, 0.962, 1.019, 1.03, 1.024, 1.013, 1.005, 1)"
+      }
+    }
+  },
+  "distance": {
+    "$type": "dimension",
+    "$description": "Offsets for movement that accompanies a fade. Stays in px in CSS.",
+    "sm": {
+      "$value": "4px"
+    },
+    "md": {
+      "$value": "8px"
+    }
+  }
+}

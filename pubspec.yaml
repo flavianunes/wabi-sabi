@@ -1,0 +1,11 @@
+# Dart pub workspace for the Flutter side of the monorepo. One `flutter pub get` here
+# resolves every Dart package together, with a single lockfile.
+name: wabi_sabi_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.13.0
+
+workspace:
+  - packages/flutter
+  - packages/flutter_widgetbook

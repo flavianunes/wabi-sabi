@@ -1,0 +1,199 @@
+{
+  "canvas": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.1}"
+  },
+  "base": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.2}"
+  },
+  "elevated": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.3}"
+  },
+  "recessed": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.4}"
+  },
+  "tint": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.3}"
+  },
+  "contrast": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.12}"
+  },
+  "control": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.3}"
+  },
+  "control-hover": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.4}"
+  },
+  "control-active": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.5}"
+  },
+  "hairline": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.6}"
+  },
+  "line": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.7}"
+  },
+  "line-strong": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.9}",
+    "$description": "Borders that identify an interactive control, such as a text field. Needs 3:1 against its surface; --line is for decorative borders."
+  },
+  "focus": {
+    "$type": "color",
+    "$value": "{color.sakura.dark.9}",
+    "$description": "Focus ring. Step 9, not 8: a focus indicator needs 3:1 against the surface it sits on (WCAG 1.4.11)."
+  },
+  "text-strong": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.12}"
+  },
+  "text-default": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.12}"
+  },
+  "text-subtle": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.11}"
+  },
+  "text-placeholder": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.10}"
+  },
+  "text-inactive": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.8}"
+  },
+  "text-inverse": {
+    "$type": "color",
+    "$value": "{color.neutral.dark.1}"
+  },
+  "accent": {
+    "$type": "color",
+    "$value": "{color.sakura.dark.9}",
+    "$description": "The customisable set is the six accent tokens. Override those, not the sakura scale."
+  },
+  "accent-hover": {
+    "$type": "color",
+    "$value": "{color.sakura.dark.8}",
+    "$description": "Step 8, not 10, in dark mode: white on sakura-dark-10 is 4.38:1, under AA. Hover darkens the fill here instead of lightening it."
+  },
+  "accent-tint": {
+    "$type": "color",
+    "$value": "{color.sakura.dark.3}"
+  },
+  "accent-border": {
+    "$type": "color",
+    "$value": "{color.sakura.dark.7}"
+  },
+  "accent-text": {
+    "$type": "color",
+    "$value": "{color.sakura.dark.11}"
+  },
+  "on-accent": {
+    "$type": "color",
+    "$value": "{color.white}"
+  },
+  "info": {
+    "$type": "color",
+    "$value": "{color.blue.dark.9}"
+  },
+  "info-tint": {
+    "$type": "color",
+    "$value": "{color.blue.dark.3}"
+  },
+  "info-border": {
+    "$type": "color",
+    "$value": "{color.blue.dark.7}"
+  },
+  "info-text": {
+    "$type": "color",
+    "$value": "{color.blue.dark.11}"
+  },
+  "on-info": {
+    "$type": "color",
+    "$value": "{color.white}"
+  },
+  "success": {
+    "$type": "color",
+    "$value": "{color.green.dark.9}"
+  },
+  "success-tint": {
+    "$type": "color",
+    "$value": "{color.green.dark.3}"
+  },
+  "success-border": {
+    "$type": "color",
+    "$value": "{color.green.dark.7}"
+  },
+  "success-text": {
+    "$type": "color",
+    "$value": "{color.green.dark.11}"
+  },
+  "on-success": {
+    "$type": "color",
+    "$value": "{color.white}"
+  },
+  "warning": {
+    "$type": "color",
+    "$value": "{color.yellow.dark.9}"
+  },
+  "warning-tint": {
+    "$type": "color",
+    "$value": "{color.yellow.dark.3}"
+  },
+  "warning-border": {
+    "$type": "color",
+    "$value": "{color.yellow.dark.7}"
+  },
+  "warning-text": {
+    "$type": "color",
+    "$value": "{color.yellow.dark.11}"
+  },
+  "on-warning": {
+    "$type": "color",
+    "$value": "#423000",
+    "$description": "NOT A BUG. The only colour fixed across modes: yellow-9 is bright in both, so text on it is dark in both. 8.2:1 on yellow-9."
+  },
+  "danger": {
+    "$type": "color",
+    "$value": "{color.red.dark.9}"
+  },
+  "danger-tint": {
+    "$type": "color",
+    "$value": "{color.red.dark.3}"
+  },
+  "danger-border": {
+    "$type": "color",
+    "$value": "{color.red.dark.7}"
+  },
+  "danger-text": {
+    "$type": "color",
+    "$value": "{color.red.dark.11}"
+  },
+  "on-danger": {
+    "$type": "color",
+    "$value": "{color.white}"
+  },
+  "link": {
+    "$type": "color",
+    "$value": "{color.blue.dark.11}"
+  },
+  "shadow-edge": {
+    "$type": "color",
+    "$value": "#ffffff1a"
+  },
+  "shadow-drop": {
+    "$type": "color",
+    "$value": "#0000004d"
+  }
+}

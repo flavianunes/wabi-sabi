@@ -2,7 +2,7 @@
  * Scaffolds a component.
  *
  * The structure of a component stops depending on anyone remembering it. This generates
- * the five files, registers the build entry and the export subpath, and creates the
+ * the six files (including the Storybook story), registers the build entry and the export subpath, and creates the
  * documentation page.
  *
  *   pnpm new-component toggle
@@ -64,8 +64,8 @@ ${Pascal}.displayName = '${Pascal}'
 const css = `/**
  * ${Pascal}.
  *
- * Only semantic and component tokens here. Referencing a primitive (--ws-neutral-11 and
- * friends) is a Stylelint error.
+ * Only semantic and component tokens here. Referencing a primitive (--ws-neutral-light-11
+ * and friends) is a Stylelint error.
  */
 
 .${camel} {
@@ -93,6 +93,31 @@ describe('${Pascal}', () => {
     expect(await axe(container)).toHaveNoViolations()
   })
 })
+`
+
+const story = `import type { Meta, StoryObj } from '@storybook/react-vite'
+import { usagePage } from '../../../.storybook/usage-page'
+import { ${Pascal} } from './${kebab}'
+
+const meta = {
+  title: 'Components/${Pascal}',
+  component: ${Pascal},
+  args: { children: 'content' },
+  parameters: {
+    docs: {
+      page: usagePage({
+        whenToUse: ['TODO: when this component is the right choice.'],
+        whenNotToUse: ['TODO: when something else serves better, naming it.'],
+      }),
+    },
+  },
+} satisfies Meta<typeof ${Pascal}>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+/** TODO: one story per variant and state. Each runs as a test, with axe, in both themes. */
+export const Playground: Story = {}
 `
 
 const meta = `import type { ComponentMeta } from '../../lib/meta'
@@ -161,6 +186,7 @@ await Promise.all([
   writeFile(join(dir, `${kebab}.tsx`), component),
   writeFile(join(dir, `${kebab}.module.css`), css),
   writeFile(join(dir, `${kebab}.test.tsx`), test),
+  writeFile(join(dir, `${kebab}.stories.tsx`), story),
   writeFile(join(dir, 'meta.ts'), meta),
   writeFile(join(dir, 'index.ts'), index),
 ])
@@ -186,14 +212,16 @@ for (const [key, value] of Object.entries(pkg.exports)) {
 pkg.exports = exports
 await writeFile(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`)
 
-// Register the build entry.
+// Register the build entry. The key is the output file name, so it must be the kebab-case
+// name the exports map points at (dist/text-field.js), quoted when it has a hyphen.
+const entryKey = kebab.includes('-') ? `'${kebab}'` : kebab
 const configPath = join(PKG, 'tsdown.config.ts')
 const config = await readFile(configPath, 'utf8')
 await writeFile(
   configPath,
   config.replace(
     /(button: 'src\/components\/button\/index\.ts',\n)/,
-    `$1    ${camel}: 'src/components/${kebab}/index.ts',\n`,
+    `$1    ${entryKey}: 'src/components/${kebab}/index.ts',\n`,
   ),
 )
 

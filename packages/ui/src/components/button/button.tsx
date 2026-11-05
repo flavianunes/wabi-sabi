@@ -1,4 +1,5 @@
 import { Button as BaseButton } from '@base-ui/react/button'
+import { useIcon } from '../../icons/provider'
 import styles from './button.module.css'
 
 /**
@@ -41,6 +42,20 @@ export interface ButtonProps extends Omit<BaseButton.Props, 'className'> {
    * @default 'md'
    */
   size?: ButtonSize
+  /**
+   * Shows a spinner beside the label and blocks activation, while keeping the button
+   * focusable so keyboard and screen reader users do not lose their place. Announced
+   * through `aria-busy`.
+   *
+   * @default false
+   */
+  loading?: boolean
+  /**
+   * Stretches the button to the width of its container.
+   *
+   * @default false
+   */
+  fullWidth?: boolean
   className?: string
 }
 
@@ -55,18 +70,52 @@ export interface ButtonProps extends Omit<BaseButton.Props, 'className'> {
  * enter or exit animation, because a button does not mount and unmount — the transitions
  * that matter here are between its states.
  *
+ * While `loading`, the label stays and a spinner joins it, so the button keeps its width.
+ * The hit area is at least 44px tall at every size, without changing the visual height.
+ *
  * @example
  * ```tsx
  * <Button onClick={save}>Save</Button>
  * <Button variant="ghost" size="sm">Cancel</Button>
+ * <Button loading>Saving</Button>
  * ```
  */
-export function Button({ variant = 'solid', size = 'md', className, ...props }: ButtonProps) {
-  const classes = [styles.button, VARIANT_CLASS[variant], SIZE_CLASS[size], className]
+export function Button({
+  variant = 'solid',
+  size = 'md',
+  loading = false,
+  fullWidth = false,
+  disabled,
+  focusableWhenDisabled,
+  className,
+  children,
+  ...props
+}: ButtonProps) {
+  const Spinner = useIcon('spinner')
+  const classes = [
+    styles.button,
+    VARIANT_CLASS[variant],
+    SIZE_CLASS[size],
+    fullWidth && styles.fullWidth,
+    className,
+  ]
     .filter(Boolean)
     .join(' ')
 
-  return <BaseButton className={classes} {...props} />
+  return (
+    <BaseButton
+      {...props}
+      className={classes}
+      disabled={disabled || loading}
+      // A loading button must not drop focus: the user pressed it and is waiting on it.
+      focusableWhenDisabled={loading || focusableWhenDisabled}
+      aria-busy={loading || undefined}
+      data-loading={loading ? '' : undefined}
+    >
+      {loading && <Spinner aria-hidden="true" className={styles.spinner} />}
+      {children}
+    </BaseButton>
+  )
 }
 
 Button.displayName = 'Button'
