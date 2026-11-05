@@ -11,7 +11,7 @@ class WabiTokensDark {
 
     static const accent = Color(0xFF9E507A); /** The customisable set is the six accent tokens. Override those, not the sakura scale. */
     static const accentBorder = Color(0xFF6D3F57);
-    static const accentHover = Color(0xFFAE5F89);
+    static const accentHover = Color(0xFF8B506F); /** Step 8, not 10, in dark mode: white on sakura-dark-10 is 4.38:1, under AA. Hover darkens the fill here instead of lightening it. */
     static const accentText = Color(0xFFDC9ABB);
     static const accentTint = Color(0xFF331D28);
     static const base = Color(0xFF1A1919);

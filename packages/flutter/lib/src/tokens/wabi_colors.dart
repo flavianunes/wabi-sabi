@@ -233,7 +233,7 @@ class WabiColors extends ThemeExtension<WabiColors> {
     textInactive: Color(0xFF696561),
     textInverse: Color(0xFF121111),
     accent: Color(0xFF9E507A),
-    accentHover: Color(0xFFAE5F89),
+    accentHover: Color(0xFF8B506F),
     accentTint: Color(0xFF331D28),
     accentBorder: Color(0xFF6D3F57),
     accentText: Color(0xFFDC9ABB),

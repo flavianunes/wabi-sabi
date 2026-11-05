@@ -84,7 +84,8 @@
   },
   "accent-hover": {
     "$type": "color",
-    "$value": "{color.sakura.dark.10}"
+    "$value": "{color.sakura.dark.8}",
+    "$description": "Step 8, not 10, in dark mode: white on sakura-dark-10 is 4.38:1, under AA. Hover darkens the fill here instead of lightening it."
   },
   "accent-tint": {
     "$type": "color",

@@ -383,7 +383,7 @@
   --ws-text-inactive: var(--ws-neutral-dark-8);
   --ws-text-inverse: var(--ws-neutral-dark-1);
   --ws-accent: var(--ws-sakura-dark-9);
-  --ws-accent-hover: var(--ws-sakura-dark-10);
+  --ws-accent-hover: var(--ws-sakura-dark-8);
   --ws-accent-tint: var(--ws-sakura-dark-3);
   --ws-accent-border: var(--ws-sakura-dark-7);
   --ws-accent-text: var(--ws-sakura-dark-11);
@@ -437,7 +437,7 @@
     --ws-text-inactive: var(--ws-neutral-dark-8);
     --ws-text-inverse: var(--ws-neutral-dark-1);
     --ws-accent: var(--ws-sakura-dark-9);
-    --ws-accent-hover: var(--ws-sakura-dark-10);
+    --ws-accent-hover: var(--ws-sakura-dark-8);
     --ws-accent-tint: var(--ws-sakura-dark-3);
     --ws-accent-border: var(--ws-sakura-dark-7);
     --ws-accent-text: var(--ws-sakura-dark-11);
