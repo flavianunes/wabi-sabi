@@ -22,7 +22,10 @@
     "format": "biome check --write .",
     "smoke": "node scripts/smoke-dist.ts",
     "new-component": "node scripts/new-component.ts",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "storybook": "pnpm --filter @wabi-sabi/ui storybook",
+    "build:storybook": "pnpm --filter @wabi-sabi/ui build:storybook",
+    "test:storybook": "pnpm --filter @wabi-sabi/ui test:storybook"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.12",
