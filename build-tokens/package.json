@@ -1,0 +1,17 @@
+{
+  "name": "@wabi-sabi/build-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Builds the DTCG tokens in /tokens into CSS, TypeScript and Dart.",
+  "scripts": {
+    "build": "node build.ts",
+    "contrast": "node contrast.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.1",
+    "style-dictionary": "^5.8.0",
+    "typescript": "^7.0.2"
+  }
+}
