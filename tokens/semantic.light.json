@@ -43,9 +43,15 @@
     "$type": "color",
     "$value": "{color.neutral.light.7}"
   },
+  "line-strong": {
+    "$type": "color",
+    "$value": "{color.neutral.light.9}",
+    "$description": "Borders that identify an interactive control, such as a text field. Needs 3:1 against its surface; --line is for decorative borders."
+  },
   "focus": {
     "$type": "color",
-    "$value": "{color.sakura.light.8}"
+    "$value": "{color.sakura.light.9}",
+    "$description": "Focus ring. Step 9, not 8: a focus indicator needs 3:1 against the surface it sits on (WCAG 1.4.11)."
   },
   "text-strong": {
     "$type": "color",

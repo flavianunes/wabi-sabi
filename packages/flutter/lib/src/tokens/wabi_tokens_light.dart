@@ -25,13 +25,14 @@ class WabiTokensLight {
     static const dangerText = Color(0xFFA02925);
     static const dangerTint = Color(0xFFFFE6E1);
     static const elevated = Color(0xFFF2F0EE);
-    static const focus = Color(0xFFDE99BC);
+    static const focus = Color(0xFF9E507A); /** Focus ring. Step 9, not 8: a focus indicator needs 3:1 against the surface it sits on (WCAG 1.4.11). */
     static const hairline = Color(0xFFD8D5D2);
     static const info = Color(0xFF466DB5);
     static const infoBorder = Color(0xFFACC8FA);
     static const infoText = Color(0xFF385997);
     static const infoTint = Color(0xFFE4F1FF);
     static const line = Color(0xFFCAC7C3);
+    static const lineStrong = Color(0xFF736E68); /** Borders that identify an interactive control, such as a text field. Needs 3:1 against its surface; --line is for decorative borders. */
     static const link = Color(0xFF385997);
     static const onAccent = Color(0xFFFFFFFF);
     static const onDanger = Color(0xFFFFFFFF);

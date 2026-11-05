@@ -267,7 +267,8 @@
   --ws-control-active: var(--ws-neutral-light-5);
   --ws-hairline: var(--ws-neutral-light-6);
   --ws-line: var(--ws-neutral-light-7);
-  --ws-focus: var(--ws-sakura-light-8);
+  --ws-line-strong: var(--ws-neutral-light-9);
+  --ws-focus: var(--ws-sakura-light-9);
   --ws-text-strong: var(--ws-neutral-light-12);
   --ws-text-default: var(--ws-neutral-light-12);
   --ws-text-subtle: var(--ws-neutral-light-11);
@@ -320,7 +321,8 @@
   --ws-control-active: var(--ws-neutral-light-5);
   --ws-hairline: var(--ws-neutral-light-6);
   --ws-line: var(--ws-neutral-light-7);
-  --ws-focus: var(--ws-sakura-light-8);
+  --ws-line-strong: var(--ws-neutral-light-9);
+  --ws-focus: var(--ws-sakura-light-9);
   --ws-text-strong: var(--ws-neutral-light-12);
   --ws-text-default: var(--ws-neutral-light-12);
   --ws-text-subtle: var(--ws-neutral-light-11);
@@ -372,7 +374,8 @@
   --ws-control-active: var(--ws-neutral-dark-5);
   --ws-hairline: var(--ws-neutral-dark-6);
   --ws-line: var(--ws-neutral-dark-7);
-  --ws-focus: var(--ws-sakura-dark-8);
+  --ws-line-strong: var(--ws-neutral-dark-9);
+  --ws-focus: var(--ws-sakura-dark-9);
   --ws-text-strong: var(--ws-neutral-dark-12);
   --ws-text-default: var(--ws-neutral-dark-12);
   --ws-text-subtle: var(--ws-neutral-dark-11);
@@ -425,7 +428,8 @@
     --ws-control-active: var(--ws-neutral-dark-5);
     --ws-hairline: var(--ws-neutral-dark-6);
     --ws-line: var(--ws-neutral-dark-7);
-    --ws-focus: var(--ws-sakura-dark-8);
+    --ws-line-strong: var(--ws-neutral-dark-9);
+    --ws-focus: var(--ws-sakura-dark-9);
     --ws-text-strong: var(--ws-neutral-dark-12);
     --ws-text-default: var(--ws-neutral-dark-12);
     --ws-text-subtle: var(--ws-neutral-dark-11);

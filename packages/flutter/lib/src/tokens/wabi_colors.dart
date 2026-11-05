@@ -22,6 +22,7 @@ class WabiColors extends ThemeExtension<WabiColors> {
     required this.controlActive,
     required this.hairline,
     required this.line,
+    required this.lineStrong,
     required this.focus,
     required this.textStrong,
     required this.textDefault,
@@ -82,6 +83,10 @@ class WabiColors extends ThemeExtension<WabiColors> {
 
   final Color line;
 
+  /// Borders that identify an interactive control, such as a text field. Needs 3:1 against its surface; --line is for decorative borders.
+  final Color lineStrong;
+
+  /// Focus ring. Step 9, not 8: a focus indicator needs 3:1 against the surface it sits on (WCAG 1.4.11).
   final Color focus;
 
   final Color textStrong;
@@ -168,7 +173,8 @@ class WabiColors extends ThemeExtension<WabiColors> {
     controlActive: Color(0xFFE3E0DD),
     hairline: Color(0xFFD8D5D2),
     line: Color(0xFFCAC7C3),
-    focus: Color(0xFFDE99BC),
+    lineStrong: Color(0xFF736E68),
+    focus: Color(0xFF9E507A),
     textStrong: Color(0xFF302D2B),
     textDefault: Color(0xFF302D2B),
     textSubtle: Color(0xFF5E5A55),
@@ -218,7 +224,8 @@ class WabiColors extends ThemeExtension<WabiColors> {
     controlActive: Color(0xFF383634),
     hairline: Color(0xFF43413E),
     line: Color(0xFF524F4C),
-    focus: Color(0xFF8B506F),
+    lineStrong: Color(0xFF736E68),
+    focus: Color(0xFF9E507A),
     textStrong: Color(0xFFE9E7E5),
     textDefault: Color(0xFFE9E7E5),
     textSubtle: Color(0xFFB4B0AC),
@@ -269,6 +276,7 @@ class WabiColors extends ThemeExtension<WabiColors> {
     Color? controlActive,
     Color? hairline,
     Color? line,
+    Color? lineStrong,
     Color? focus,
     Color? textStrong,
     Color? textDefault,
@@ -318,6 +326,7 @@ class WabiColors extends ThemeExtension<WabiColors> {
       controlActive: controlActive ?? this.controlActive,
       hairline: hairline ?? this.hairline,
       line: line ?? this.line,
+      lineStrong: lineStrong ?? this.lineStrong,
       focus: focus ?? this.focus,
       textStrong: textStrong ?? this.textStrong,
       textDefault: textDefault ?? this.textDefault,
@@ -372,6 +381,7 @@ class WabiColors extends ThemeExtension<WabiColors> {
       controlActive: Color.lerp(controlActive, other.controlActive, t)!,
       hairline: Color.lerp(hairline, other.hairline, t)!,
       line: Color.lerp(line, other.line, t)!,
+      lineStrong: Color.lerp(lineStrong, other.lineStrong, t)!,
       focus: Color.lerp(focus, other.focus, t)!,
       textStrong: Color.lerp(textStrong, other.textStrong, t)!,
       textDefault: Color.lerp(textDefault, other.textDefault, t)!,
