@@ -517,6 +517,23 @@
       "$value": "9999px"
     }
   },
+  "border": {
+    "$type": "dimension",
+    "$description": "Stroke widths. Stay in px in CSS: a border is a hairline, not a size that should scale with text.",
+    "width": {
+      "$value": "1px"
+    }
+  },
+  "focus-ring": {
+    "$type": "dimension",
+    "$description": "Focus indicator geometry, in px.",
+    "width": {
+      "$value": "2px"
+    },
+    "offset": {
+      "$value": "2px"
+    }
+  },
   "font": {
     "$type": "fontFamily",
     "$description": "The library ships no fonts. Text inherits the consuming project typography; only the mono stack is named.",

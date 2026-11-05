@@ -185,6 +185,13 @@
   --ws-radius-md: 0.375rem;
   --ws-radius-full: 9999px;
 
+  /* border */
+  --ws-border-width: 1px;
+
+  /* focus-ring */
+  --ws-focus-ring-width: 2px;
+  --ws-focus-ring-offset: 2px;
+
   /* font */
   --ws-font-mono: ui-monospace, sfmono-regular, menlo, monospace;
 

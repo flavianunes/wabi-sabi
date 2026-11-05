@@ -10,10 +10,9 @@
  */
 
 .button {
-  --ws-button-height: 2.25rem;
-  --ws-button-padding-x: 0.875rem;
-  --ws-button-gap: 0.5rem;
-  --ws-button-radius: 0.375rem;
+  --ws-button-height: var(--ws-button-height-md);
+  --ws-button-padding-x: var(--ws-button-padding-x-md);
+  --ws-button-gap: var(--ws-button-gap-md);
   --ws-button-font-size: var(--ws-text-base);
   --ws-button-bg: transparent;
   --ws-button-fg: var(--ws-text-default);
@@ -25,7 +24,8 @@
   gap: var(--ws-button-gap);
   height: var(--ws-button-height);
   padding-inline: var(--ws-button-padding-x);
-  border: 1px solid var(--ws-button-border);
+  border: var(--ws-border-width) solid var(--ws-button-border);
+  /* Read straight from the token layer, not redeclared here, so a wrapper can override it. */
   border-radius: var(--ws-button-radius);
   background: var(--ws-button-bg);
   color: var(--ws-button-fg);
@@ -60,8 +60,8 @@
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--ws-focus);
-  outline-offset: 2px;
+  outline: var(--ws-focus-ring-width) solid var(--ws-focus);
+  outline-offset: var(--ws-focus-ring-offset);
 }
 
 /*
@@ -135,21 +135,23 @@
 /* Sizes ------------------------------------------------------------------- */
 
 .sm {
-  --ws-button-height: 1.75rem;
-  --ws-button-padding-x: 0.625rem;
-  --ws-button-gap: 0.375rem;
+  --ws-button-height: var(--ws-button-height-sm);
+  --ws-button-padding-x: var(--ws-button-padding-x-sm);
+  --ws-button-gap: var(--ws-button-gap-sm);
   --ws-button-font-size: var(--ws-text-sm);
 }
 
 .md {
-  --ws-button-height: 2.25rem;
-  --ws-button-padding-x: 0.875rem;
+  --ws-button-height: var(--ws-button-height-md);
+  --ws-button-padding-x: var(--ws-button-padding-x-md);
+  --ws-button-gap: var(--ws-button-gap-md);
   --ws-button-font-size: var(--ws-text-base);
 }
 
 .lg {
-  --ws-button-height: 2.75rem;
-  --ws-button-padding-x: 1.25rem;
+  --ws-button-height: var(--ws-button-height-lg);
+  --ws-button-padding-x: var(--ws-button-padding-x-lg);
+  --ws-button-gap: var(--ws-button-gap-lg);
   --ws-button-font-size: var(--ws-text-lg);
 }
 

@@ -84,14 +84,16 @@ function num(value: number): string {
 
 // CSS --------------------------------------------------------------------------------------
 
+/** Groups whose dimensions stay in px: offsets and strokes, not sizes that follow text. */
+const PX_GROUPS = new Set(['distance', 'border', 'focus-ring'])
+
 /**
- * px becomes rem, so sizes follow the user's font size setting. Two exceptions stay in px:
- * motion distances, which are offsets rather than sizes, and the "full" radius, which is a
- * sentinel rather than a length.
+ * px becomes rem, so sizes follow the user's font size setting. The exceptions stay in px:
+ * the groups above, and the "full" radius, which is a sentinel rather than a length.
  */
 function cssDimension(token: TransformedToken): string {
   const value = px(token.$value)
-  if (token.path[0] === 'distance' || value >= 9999) return `${num(value)}px`
+  if (PX_GROUPS.has(token.path[0] ?? '') || value >= 9999) return `${num(value)}px`
   return `${num(value / 16)}rem`
 }
 
@@ -366,6 +368,8 @@ ${fields.map(({ name }) => `      ${name}: Color.lerp(${name}, other.${name}, t)
 const DART_GROUPS: Record<string, { className: string; doc: string }> = {
   space: { className: 'WabiSpace', doc: '4px spacing scale, in logical pixels.' },
   radius: { className: 'WabiRadius', doc: 'Corner radii, in logical pixels.' },
+  border: { className: 'WabiBorder', doc: 'Stroke widths, in logical pixels.' },
+  'focus-ring': { className: 'WabiFocusRing', doc: 'Focus indicator geometry.' },
   font: { className: 'WabiFontFamily', doc: 'Font stacks. The library ships no fonts.' },
   text: { className: 'WabiFontSize', doc: 'Font sizes: modular scale, ratio 1.2 from 16.' },
   leading: { className: 'WabiLineHeight', doc: 'Line heights, as multipliers.' },

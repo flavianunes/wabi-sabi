@@ -22,6 +22,17 @@ abstract final class WabiRadius {
   static const double full = 9999;
 }
 
+/// Stroke widths, in logical pixels.
+abstract final class WabiBorder {
+  static const double width = 1;
+}
+
+/// Focus indicator geometry.
+abstract final class WabiFocusRing {
+  static const double width = 2;
+  static const double offset = 2;
+}
+
 /// Font stacks. The library ships no fonts.
 abstract final class WabiFontFamily {
   static const List<String> mono = ['ui-monospace', 'sfmono-regular', 'menlo', 'monospace'];

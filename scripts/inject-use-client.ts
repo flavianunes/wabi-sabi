@@ -43,7 +43,7 @@ const directivePattern = () => /^\s*(['"])use client\1;?\s*$/gm
  *
  * Anything listed here must therefore contain no components and no hooks.
  */
-const SERVER_SAFE_ENTRIES = new Set(['meta.js'])
+const SERVER_SAFE_ENTRIES = new Set(['meta.js', 'tokens.js'])
 
 /**
  * Resolves the full set of server-safe files, by following what the server-safe entries
