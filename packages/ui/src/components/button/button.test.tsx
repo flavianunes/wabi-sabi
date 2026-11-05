@@ -107,15 +107,66 @@ describe('Button', () => {
     expect(ghost?.className).not.toBe(solid?.className)
   })
 
-  it('has no accessibility violations', async () => {
-    const { container } = render(<Button>Save</Button>)
+  describe('loading', () => {
+    it('announces itself as busy and shows a decorative spinner', () => {
+      render(<Button loading>Save</Button>)
 
-    expect(await axe(container)).toHaveNoViolations()
+      const button = screen.getByRole('button', { name: 'Save' })
+      expect(button.getAttribute('aria-busy')).toBe('true')
+      expect(button.querySelector('svg')?.getAttribute('aria-hidden')).toBe('true')
+    })
+
+    it('does not call onClick', async () => {
+      const user = userEvent.setup()
+      const onClick = vi.fn()
+      render(
+        <Button loading onClick={onClick}>
+          Save
+        </Button>,
+      )
+
+      await user.click(screen.getByRole('button'))
+
+      expect(onClick).not.toHaveBeenCalled()
+    })
+
+    // The user pressed it and is waiting on it; losing focus would drop them to the page.
+    it('stays focusable', async () => {
+      const user = userEvent.setup()
+      render(<Button loading>Save</Button>)
+
+      await user.tab()
+
+      expect(screen.getByRole('button')).toBe(document.activeElement)
+    })
+
+    it('is not busy by default', () => {
+      render(<Button>Save</Button>)
+
+      expect(screen.getByRole('button').hasAttribute('aria-busy')).toBe(false)
+      expect(screen.getByRole('button').querySelector('svg')).toBeNull()
+    })
   })
 
-  it('has no accessibility violations when disabled', async () => {
-    const { container } = render(<Button disabled>Save</Button>)
+  it('stretches to its container with fullWidth', () => {
+    render(<Button fullWidth>Save</Button>)
 
-    expect(await axe(container)).toHaveNoViolations()
+    expect(screen.getByRole('button').className).toMatch(/fullWidth/)
+  })
+
+  describe.each(['light', 'dark'])('accessibility in the %s theme', (theme) => {
+    it.each([
+      ['at rest', {}],
+      ['disabled', { disabled: true }],
+      ['loading', { loading: true }],
+    ])('has no violations %s', async (_state, props) => {
+      const { container } = render(
+        <div data-theme={theme}>
+          <Button {...props}>Save</Button>
+        </div>,
+      )
+
+      expect(await axe(container)).toHaveNoViolations()
+    })
   })
 })

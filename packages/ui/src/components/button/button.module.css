@@ -18,6 +18,7 @@
   --ws-button-fg: var(--ws-text-default);
   --ws-button-border: transparent;
 
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -52,6 +53,18 @@
     color var(--ws-duration-fast) var(--ws-ease-enter);
 }
 
+/*
+ * The hit area is at least 44px tall (WCAG 2.5.5) at every size. A transparent pseudo
+ * element extends it vertically, so sm and md keep their visual height. At lg the button is
+ * already 44px and the inset resolves to zero.
+ */
+.button::after {
+  position: absolute;
+  inset-block: min(0px, calc((var(--ws-button-height) - var(--ws-button-hit-area)) / 2));
+  inset-inline: 0;
+  content: "";
+}
+
 .button > svg {
   flex-shrink: 0;
   width: var(--ws-icon-size);
@@ -77,8 +90,11 @@
 /*
  * Keyed off Base UI's data attribute, not :disabled. With `nativeButton={false}` the
  * rendered element has no native disabled state, so :disabled would silently not match.
+ *
+ * A loading button is disabled for interaction but keeps its variant's colours: it is
+ * busy, not unavailable.
  */
-.button[data-disabled] {
+.button[data-disabled]:not([data-loading]) {
   cursor: not-allowed;
   color: var(--ws-text-inactive);
   border-color: transparent;
@@ -89,13 +105,31 @@
  * disabled. A filled disabled ghost button would read as a solid one, which is why the
  * fill is set per variant rather than on .button above.
  */
-.solid[data-disabled],
-.soft[data-disabled] {
+.solid[data-disabled]:not([data-loading]),
+.soft[data-disabled]:not([data-loading]) {
   --ws-button-bg: var(--ws-control);
 }
 
-.ghost[data-disabled] {
+.ghost[data-disabled]:not([data-loading]) {
   --ws-button-bg: transparent;
+}
+
+.button[data-loading] {
+  cursor: progress;
+}
+
+.spinner {
+  animation: spin calc(var(--ws-duration-slow) * 2) linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.fullWidth {
+  width: 100%;
 }
 
 /* Variants ---------------------------------------------------------------- */
@@ -169,5 +203,10 @@
 
   .button:active:not([data-disabled]) {
     transform: none;
+  }
+
+  /* The spinner holds still; aria-busy and the icon itself still say "working". */
+  .spinner {
+    animation: none;
   }
 }
