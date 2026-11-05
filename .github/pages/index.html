@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>wabi-sabi</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --canvas: #fdfdfc;
+        --text: #302d2b;
+        --subtle: #5e5a55;
+        --accent: #9e507a;
+        --line: #d8d5d2;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --canvas: #121111;
+          --text: #e9e7e5;
+          --subtle: #b4b0ac;
+          --accent: #dc9abb;
+          --line: #43413e;
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--canvas);
+        color: var(--text);
+        font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      main {
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: 4rem 1rem;
+      }
+      p {
+        color: var(--subtle);
+      }
+      ul {
+        display: grid;
+        gap: 1rem;
+        padding: 0;
+        list-style: none;
+      }
+      a {
+        display: block;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--line);
+        border-radius: 0.375rem;
+        color: var(--text);
+        text-decoration: none;
+      }
+      a:hover,
+      a:focus-visible {
+        border-color: var(--accent);
+      }
+      strong {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>wabi-sabi</h1>
+      <p>One set of DTCG tokens, two component libraries.</p>
+      <ul>
+        <li>
+          <a href="storybook/"><strong>Storybook</strong> — React components (@wabi-sabi/ui)</a>
+        </li>
+        <li>
+          <a href="widgetbook/"><strong>Widgetbook</strong> — Flutter components (wabi_sabi)</a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
