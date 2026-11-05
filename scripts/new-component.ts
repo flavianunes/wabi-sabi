@@ -186,14 +186,16 @@ for (const [key, value] of Object.entries(pkg.exports)) {
 pkg.exports = exports
 await writeFile(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`)
 
-// Register the build entry.
+// Register the build entry. The key is the output file name, so it must be the kebab-case
+// name the exports map points at (dist/text-field.js), quoted when it has a hyphen.
+const entryKey = kebab.includes('-') ? `'${kebab}'` : kebab
 const configPath = join(PKG, 'tsdown.config.ts')
 const config = await readFile(configPath, 'utf8')
 await writeFile(
   configPath,
   config.replace(
     /(button: 'src\/components\/button\/index\.ts',\n)/,
-    `$1    ${camel}: 'src/components/${kebab}/index.ts',\n`,
+    `$1    ${entryKey}: 'src/components/${kebab}/index.ts',\n`,
   ),
 )
 

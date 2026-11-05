@@ -186,10 +186,12 @@ check(
   !allJs.some((source) => source.includes('@base-ui-components/react')),
   'dist references @base-ui-components/react, which is the obsolete package',
 )
-// A dependency that stayed external is imported, never inlined. This string appears in
-// Base UI's own source, so finding it in our output means it was bundled in.
+// A dependency that stayed external is imported, never inlined. useRenderElement is Base
+// UI's internal rendering hook: it appears in every Base UI component's source and never in
+// ours, so finding it in our output means Base UI was bundled in. (A public prop name would
+// not do — components pass those through.)
 check(
-  !allJs.some((source) => source.includes('focusableWhenDisabled')),
+  !allJs.some((source) => source.includes('useRenderElement')),
   'dist appears to contain inlined Base UI source, so it was not externalised',
 )
 
