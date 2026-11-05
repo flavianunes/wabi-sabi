@@ -8,6 +8,7 @@
 /// ```
 library;
 export 'src/components/wabi_button.dart';
+export 'src/components/wabi_card.dart';
 export 'src/components/wabi_text_field.dart';
 export 'src/theme/wabi_theme.dart';
 export 'src/tokens/wabi_base_tokens.dart';
