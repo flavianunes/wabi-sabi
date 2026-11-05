@@ -28,7 +28,7 @@ void main() {
 
       expect(
         tester.getSemantics(find.text('Save')),
-        containsSemantics(
+        isSemantics(
           label: 'Save',
           isButton: true,
           hasEnabledState: true,

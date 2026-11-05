@@ -12,7 +12,7 @@ void main() {
 
       expect(
         tester.getSemantics(find.byType(EditableText)),
-        containsSemantics(
+        isSemantics(
           label: 'Email',
           isTextField: true,
           isEnabled: true,
