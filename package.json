@@ -11,7 +11,7 @@
     "pnpm": ">=11"
   },
   "scripts": {
-    "tokens": "pnpm --filter @wabi-sabi/build-tokens build",
+    "tokens": "pnpm --filter @wabi-sabi/build-tokens build && pnpm --filter @wabi-sabi/build-tokens contrast",
     "build": "pnpm tokens && pnpm --filter @wabi-sabi/ui build",
     "build:docs": "pnpm --filter @wabi-sabi/ui build && pnpm --filter docs build",
     "dev": "pnpm --filter @wabi-sabi/ui build && pnpm --filter docs dev",
