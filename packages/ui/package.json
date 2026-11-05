@@ -34,6 +34,10 @@
       "types": "./dist/text-field.d.ts",
       "import": "./dist/text-field.js"
     },
+    "./card": {
+      "types": "./dist/card.d.ts",
+      "import": "./dist/card.js"
+    },
     "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
   },

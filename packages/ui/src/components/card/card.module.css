@@ -1,0 +1,44 @@
+/**
+ * Card.
+ *
+ * Component tokens at the top of .card are its fine customisation surface. Only semantic
+ * and component tokens appear below; a primitive here is a Stylelint error.
+ *
+ * The border is --ws-line, not --ws-line-strong: it groups content rather than identifying
+ * a control, so the 3:1 requirement for interface components does not apply.
+ */
+
+.card {
+  --ws-card-bg: var(--ws-base);
+  --ws-card-border: var(--ws-line);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--ws-card-gap);
+  padding: var(--ws-card-padding);
+  border: var(--ws-border-width) solid var(--ws-card-border);
+  border-radius: var(--ws-card-radius);
+  background: var(--ws-card-bg);
+  color: var(--ws-text-default);
+}
+
+.title {
+  margin: 0;
+  color: var(--ws-text-strong);
+  font-size: var(--ws-text-lg);
+  font-weight: var(--ws-weight-medium);
+  line-height: var(--ws-leading-tight);
+}
+
+.body {
+  line-height: var(--ws-leading-base);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ws-space-2);
+  padding-top: var(--ws-card-gap);
+  border-top: var(--ws-border-width) solid var(--ws-hairline);
+}

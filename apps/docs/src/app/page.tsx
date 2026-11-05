@@ -18,6 +18,9 @@ export default function HomePage() {
         <li>
           <Link href="/components/text-field">TextField</Link>
         </li>
+        <li>
+          <Link href="/components/card">Card</Link>
+        </li>
       </ul>
     </main>
   )
